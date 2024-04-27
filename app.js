@@ -10,61 +10,10 @@ app.use('/static', express.static('static')); // For serving static files
 app.use(express.urlencoded({ extended: true })); // To extract the data from the website to the app.js file
 app.use(bodyParser.json());
 
+
 app.post("/apply", async (req, res) => {
   console.log("res = " + JSON.stringify(req.body));
-  req.body = {
-    "name": "sdsdf",
-    "companyEmail": "sdf",
-    "linkedinUrl": "ds",
-    "contactNumber": "dsf",
-    "yourHRIS": "sdf",
-    "unit": "sddwqsf",
-    "typeOfEquipment": "wq",
-    "issueType": "sddf",
-    "baNo": "dsf",
-    "chassisNo": "dsd",
-    "engineOrgOH": "wqqwdsd",
-    "engKm": "",
-    "engHrs": "",
-    "chassisKm": "",
-    "chassisHrs": "",
-    "tmIDone": "",
-    "tmIDue": "",
-    "tmIIDone": "",
-    "tmIIDue": "",
-    "mrIDueDt": "",
-    "mrIDoneDt": "",
-    "ohIDueDt": "",
-    "ohIDoneDt": "",
-    "mrIIDue": "",
-    "mrIIDone": "",
-    "ohIIDue": "",
-    "ohIIDone": "",
-    "serR2EOAVOR": "",
-    "assy": "",
-    "section": "",
-    "natureOfDefect": "",
-    "demandPlacedTo": "",
-    "demandNoDt": "",
-    "contNoDt": "",
-    "workOrderNoDate": "",
-    "fwdTo": "",
-    "since": "",
-    "presentStatus": "",
-    "underRepairTime": "",
-    "efcRDSFired": "",
-    "chamberElongation": "",
-    "bore": "",
-    "gunPullBackDoneDate": "",
-    "siDetails": "",
-    "fumeExtractor": "",
-    "n2PurgingDueDate": "",
-    "n2PurgingCarriedOut": "",
-    "getterActivationDoneDate": ""
-  };
-  if (!req.body.name || !req.body.companyEmail || !req.body.linkedinUrl || !req.body.contactNumber || !req.body.yourHRIS) {
-    res.status(400).send();
-  } else {
+
     try {
       const workbookPath = 'data.xlsx'; // Path to your local Excel file
 
@@ -76,7 +25,9 @@ app.post("/apply", async (req, res) => {
       }
 
       const resKeys = Object.keys(req.body);
+
       const dataValues = resKeys.map(key => req.body[key]);
+      console.log("datavalues "+dataValues);
 
       // Select the first worksheet or create a new one if it doesn't exist
       const worksheetName = workbook.SheetNames[0] || 'Sheet1';
@@ -90,6 +41,7 @@ app.post("/apply", async (req, res) => {
       // Append new row with form data
       const range = worksheet['!ref'] ? xlsx.utils.decode_range(worksheet['!ref']) : { s: { c: 0, r: 0 }, e: { c: 0, r: 0 } };
       const newRowRef = range.e.r + 1;
+      console.log("dataValues.length ",dataValues.length);
       for (let i = 0; i < dataValues.length; i++) {
         const cellRef = xlsx.utils.encode_cell({ r: newRowRef, c: i });
         worksheet[cellRef] = { v: dataValues[i] };
@@ -105,8 +57,7 @@ app.post("/apply", async (req, res) => {
       console.log("Error in Submitting Form data is " + e);
       res.status(500).send();
     }
-  }
-});
+ });
 
 app.use(express.static(path.join(__dirname, "./Frontend/build")));
 app.get("*", function (_, res) {
