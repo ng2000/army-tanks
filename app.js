@@ -108,6 +108,35 @@ app.post("/apply", async (req, res) => {
       res.status(500).send();
     }
  });
+// function excelToJson(filePath) {
+//   const workbook = xlsx.readFile(filePath);
+//   const sheetName = workbook.SheetNames[0]; // Assuming data is in the first sheet
+//   const sheet = workbook.Sheets[sheetName];
+//   const jsonData = xlsx.utils.sheet_to_json(sheet);
+//   return jsonData;
+// }
+//
+//app.get("/allData", function (_, res) {
+//  const filePath= 'data.xlsx';
+//  const jsonData = excelToJson(filePath);
+//  console.log(jsonData);
+//  return jsonData;
+//});
+
+function excelToJson(filePath) {
+  const workbook = xlsx.readFile(filePath);
+  const sheetName = workbook.SheetNames[0]; // Assuming data is in the first sheet
+  const sheet = workbook.Sheets[sheetName];
+  const jsonData = xlsx.utils.sheet_to_json(sheet);
+  return jsonData;
+}
+
+app.get("/allData", function (_, res) {
+  const filePath = 'data.xlsx';
+  const jsonData = excelToJson(filePath);
+  res.json(jsonData); // Send the JSON data as response
+});
+
 
 app.use(express.static(path.join(__dirname, "./Frontend/build")));
 app.get("*", function (_, res) {
