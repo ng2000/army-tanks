@@ -1,0 +1,159 @@
+.hero-details {
+    max-width: 800px;
+    margin-bottom: 20px;
+    color: #7b88a8;
+    font-size: 18px;
+    line-height: 1.45;
+    font-weight: 400;
+    text-align: center;
+}
+.text-field {
+    position: relative;
+    width: 100%;
+    height: 56px;
+    border: 1px solid #e6eaf5;
+    font-size: 18px;
+}
+.form-wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+    h3 { 
+        display: block;
+        font-size: 1.17em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-left: 0;
+        margin-right: 0;
+        font-weight: bold;
+    }
+
+.plain-h3 {
+    margin-top: 10px;
+    margin-bottom: 25px;
+    font-size: 26px;
+    font-weight: 500;
+    color: #000;
+    text-align: center;
+}
+.w-input, .w-select {
+    display: block;
+    /* width: 100%; */
+    /* height: 38px; */
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    /* font-size: 14px; */
+    line-height: 1.42857143;
+    color: #333333;
+    background-color: #ffffff;
+    /* border: 1px solid #cccccc; */
+}
+.button-submit {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    min-height: 56px;
+    margin-top: 20px;
+    padding-right: 30px;
+    padding-left: 30px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #8b5cf6;
+    -webkit-transition: background-color 300ms ease;
+    transition: background-color 300ms ease;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+}
+.success-message {
+    
+    color: green;
+    text-align: center;
+    margin-top: 10px;
+    padding: 3px;
+}
+.error-message
+{
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+    padding: 3px;
+}
+.contact-div
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    background-color:#f5f3ff;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.form-base {
+    display: block;
+    width: 100%;
+    max-width: 490px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-right: 40px;
+    margin-left: 0px;
+    padding: 30px;
+    border-radius: 24px;
+    background-color: #fff;
+    box-shadow: 1px 1px 20px 2px rgb(230 234 245 / 40%);
+}
+.form-right {
+    display: block;
+    width: 100%;
+    max-width: 490px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-right: 40px;
+    margin-left: 0px;
+    padding: 30px;
+    border-radius: 24px;
+    background-color: #fff;
+    box-shadow: 1px 1px 20px 2px rgb(230 234 245 / 40%);
+}
+@media screen and (max-width: 991px)
+{
+.form-base {
+    background-color: #fff;
+    color: #000;
+    margin-right: auto;
+    margin-left: auto;
+    width: 90%;
+}
+.form-right
+{
+    background-color: #fff;
+    color: #000;
+    margin-right: auto;
+    margin-left: auto;
+    width: 90%;
+}
+
+}
+@media screen and (max-width: 600px)
+{
+.form-base {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.form-right{
+    display: none;
+}
+}
