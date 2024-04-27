@@ -2,26 +2,70 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const port = process.env.PORT || 3000;
-const { google } = require("googleapis")
-
-var bodyParser = require('body-parser')
-
-// EXPRESS SPECIFIC STUFF
-app.use('/static', express.static('static')) // For serving static files 
-app.use(express.urlencoded({ extended: true })) //To extract the data from the website to the app.js file
-app.use(bodyParser.json());
-
+const bodyParser = require('body-parser');
 const xlsx = require('xlsx');
 const fs = require('fs');
+
+app.use('/static', express.static('static')); // For serving static files
+app.use(express.urlencoded({ extended: true })); // To extract the data from the website to the app.js file
+app.use(bodyParser.json());
+
 app.post("/apply", async (req, res) => {
   console.log("res = " + JSON.stringify(req.body));
+  req.body = {
+    "name": "sdsdf",
+    "companyEmail": "sdf",
+    "linkedinUrl": "ds",
+    "contactNumber": "dsf",
+    "yourHRIS": "sdf",
+    "unit": "sddwqsf",
+    "typeOfEquipment": "wq",
+    "issueType": "sddf",
+    "baNo": "dsf",
+    "chassisNo": "dsd",
+    "engineOrgOH": "wqqwdsd",
+    "engKm": "",
+    "engHrs": "",
+    "chassisKm": "",
+    "chassisHrs": "",
+    "tmIDone": "",
+    "tmIDue": "",
+    "tmIIDone": "",
+    "tmIIDue": "",
+    "mrIDueDt": "",
+    "mrIDoneDt": "",
+    "ohIDueDt": "",
+    "ohIDoneDt": "",
+    "mrIIDue": "",
+    "mrIIDone": "",
+    "ohIIDue": "",
+    "ohIIDone": "",
+    "serR2EOAVOR": "",
+    "assy": "",
+    "section": "",
+    "natureOfDefect": "",
+    "demandPlacedTo": "",
+    "demandNoDt": "",
+    "contNoDt": "",
+    "workOrderNoDate": "",
+    "fwdTo": "",
+    "since": "",
+    "presentStatus": "",
+    "underRepairTime": "",
+    "efcRDSFired": "",
+    "chamberElongation": "",
+    "bore": "",
+    "gunPullBackDoneDate": "",
+    "siDetails": "",
+    "fumeExtractor": "",
+    "n2PurgingDueDate": "",
+    "n2PurgingCarriedOut": "",
+    "getterActivationDoneDate": ""
+  };
   if (!req.body.name || !req.body.companyEmail || !req.body.linkedinUrl || !req.body.contactNumber || !req.body.yourHRIS) {
     res.status(400).send();
   } else {
     try {
-      const { name, companyEmail, linkedinUrl, contactNumber, yourHRIS } = req.body;
-      console.log("Form data submitted is " + JSON.stringify(req.body));
-
       const workbookPath = 'data.xlsx'; // Path to your local Excel file
 
       let workbook;
@@ -31,22 +75,24 @@ app.post("/apply", async (req, res) => {
         workbook = xlsx.utils.book_new();
       }
 
+      const resKeys = Object.keys(req.body);
+      const dataValues = resKeys.map(key => req.body[key]);
+
       // Select the first worksheet or create a new one if it doesn't exist
       const worksheetName = workbook.SheetNames[0] || 'Sheet1';
       let worksheet = workbook.Sheets[worksheetName];
       if (!worksheet) {
-        worksheet = xlsx.utils.aoa_to_sheet([['Name', 'Company Email', 'LinkedIn URL', 'Contact Number', 'Your HRIS']]);
+        worksheet = xlsx.utils.aoa_to_sheet([resKeys]);
         workbook.SheetNames.push(worksheetName);
         workbook.Sheets[worksheetName] = worksheet;
       }
 
       // Append new row with form data
-      const newRow = [name, companyEmail, linkedinUrl, contactNumber, yourHRIS];
       const range = worksheet['!ref'] ? xlsx.utils.decode_range(worksheet['!ref']) : { s: { c: 0, r: 0 }, e: { c: 0, r: 0 } };
       const newRowRef = range.e.r + 1;
-      for (let i = 0; i < newRow.length; i++) {
+      for (let i = 0; i < dataValues.length; i++) {
         const cellRef = xlsx.utils.encode_cell({ r: newRowRef, c: i });
-        worksheet[cellRef] = { v: newRow[i] };
+        worksheet[cellRef] = { v: dataValues[i] };
         worksheet[cellRef].t = 's';
       }
       worksheet['!ref'] = xlsx.utils.encode_range({ s: { c: 0, r: 0 }, e: { c: range.e.c, r: range.e.r + 1 } });
@@ -62,7 +108,6 @@ app.post("/apply", async (req, res) => {
   }
 });
 
-
 app.use(express.static(path.join(__dirname, "./Frontend/build")));
 app.get("*", function (_, res) {
   res.sendFile(
@@ -73,7 +118,7 @@ app.get("*", function (_, res) {
   );
 });
 
-//listening on specified Port
+// listening on specified Port
 app.listen(port, () => {
   console.log(`server is running at port ${port}`);
 });
