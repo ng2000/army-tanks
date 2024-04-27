@@ -4,11 +4,6 @@ import { Spinner } from 'react-bootstrap';
 
 export default function ApplyForAccess() {
   const [formData, setFormData] = useState({
-    name: '',
-    companyEmail: '',
-    linkedinUrl: '',
-    contactNumber: '',
-    yourHRIS: '',
     unit: '',
     typeOfEquipment: '',
     issueType: '',
@@ -54,6 +49,51 @@ export default function ApplyForAccess() {
     getterActivationDoneDate: ''
   });
 
+  const fieldMap = {
+    unit: 'Unit',
+    typeOfEquipment: 'Type of Eqpt',
+    issueType: 'Issue Type',
+    baNo: 'BA No',
+    chassisNo: 'Chassis No',
+    engineOrgOH: 'Engine Org/OH',
+    engKm: 'Eng Km',
+    engHrs: 'Eng Hrs',
+    chassisKm: 'Chassis Km',
+    chassisHrs: 'Chassis Hrs',
+    tmIDone: 'TM I Done',
+    tmIDue: 'TM I Due',
+    tmIIDone: 'TM II Done',
+    tmIIDue: 'TM II Due',
+    mrIDueDt: 'MR-I Due Dt',
+    mrIDoneDt: 'MR-I Done Dt',
+    ohIDueDt: 'OH-I Due Dt',
+    ohIDoneDt: 'OH-I Done Dt',
+    mrIIDue: 'MR II Due',
+    mrIIDone: 'MR II Done',
+    ohIIDue: 'OH II Due',
+    ohIIDone: 'OH II Done',
+    serR2EOAVOR: 'SER/R2/EOA/VOR',
+    assy: 'Assy',
+    section: 'Section',
+    natureOfDefect: 'Nature of Defect',
+    demandPlacedTo: 'Demand Placed To',
+    demandNoDt: 'Demand No & Dt',
+    contNoDt: 'Cont No & Dt',
+    workOrderNoDate: 'Work Order No & Dt',
+    fwdTo: 'Fwd To',
+    since: 'Since',
+    presentStatus: 'Present Status',
+    underRepairTime: 'Under Repair Time',
+    efcRDSFired: 'EFC/RDS Fired',
+    chamberElongation: 'Chamber Elongation',
+    bore: 'Bore',
+    gunPullBackDoneDate: 'Gun Pull Back Done Date',
+    siDetails: 'SI Details',
+    fumeExtractor: 'Fume Extractor',
+    n2PurgingDueDate: 'N2 Purging Due Date',
+    n2PurgingCarriedOut: 'N2 Purging Carried Out',
+    getterActivationDoneDate: 'Getter Activation Done Date (Check Every 3 Months)'
+  };
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
@@ -81,11 +121,6 @@ export default function ApplyForAccess() {
 
       if (res.status === 200) {
         setFormData({
-          name: '',
-          companyEmail: '',
-          linkedinUrl: '',
-          contactNumber: '',
-          yourHRIS: '',
           unit: '',
           typeOfEquipment: '',
           issueType: '',
@@ -130,7 +165,7 @@ export default function ApplyForAccess() {
           n2PurgingCarriedOut: '',
           getterActivationDoneDate: ''
         });
-        setSuccessMessage('Thank you! We\'ll be in touch soon!');
+        setSuccessMessage('Tank Details Added Successfully!');
       } else {
         setErrorMessage('Oops! Something went wrong while submitting the form.');
       }
@@ -166,7 +201,7 @@ export default function ApplyForAccess() {
                           maxLength={256}
                           name={fieldName}
                           value={value}
-                          placeholder={fieldName}
+                          placeholder={fieldMap[fieldName]}
                           onChange={handleChange}
                         />
                       </div>
@@ -185,7 +220,7 @@ export default function ApplyForAccess() {
                           maxLength={256}
                           name={fieldName}
                           value={value}
-                          placeholder={fieldName}
+                          placeholder={fieldMap[fieldName]}
                           onChange={handleChange}
                         />
                       </div>
