@@ -15,9 +15,8 @@ export default function App() {
       <div className="App"> 
 	      <NavbarComponent/>
         <Routes>
-          <Route path ="/" element= {<><Banner /> </>}/>  
-          <Route path ="/demo" element= {<Demo />}/> 
-          <Route path ="/apply" element= {<ApplyForAccess />}/> 
+          <Route path ="/" element= {<><Banner /> </>}/>
+          <Route path ="/add" element= {<ApplyForAccess />}/> 
         </Routes> 
         <Footer />
   </div> 

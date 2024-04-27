@@ -145,7 +145,7 @@ export default function ApplyForAccess() {
   return (
     <div className=' contact-div'>
       <div className='form-base'>
-        <h3 className='plain-h3'>Apply Here</h3>
+        <h3 className='plain-h3'>Add new tank</h3>
         <div className='w-form'>
           <form
             id='wf-form-Register-Form'
