@@ -1,0 +1,19 @@
+.ag-theme-quartz,
+.ag-theme-quartz-dark {
+      --ag-foreground-color: #270378;
+      --ag-background-color: #f7f3fe;
+      --ag-header-background-color: #e6e6e8;
+      --ag-row-hover-color: rgb(207 207 241);
+}
+
+.gridClass {
+      width: 80%;
+      height: 300px;
+}
+
+.center-grid {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      margin-top: 10px;
+}
