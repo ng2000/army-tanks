@@ -44,7 +44,7 @@ export default function Banner() {
     }
   }, []);
   return (
-    <div>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <div
         className=
         "ag-theme-quartz-dark gridClass"
