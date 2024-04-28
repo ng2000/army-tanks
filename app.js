@@ -5,6 +5,8 @@ const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 const xlsx = require('xlsx');
 const fs = require('fs');
+const multer = require('multer');
+
 
 app.use('/static', express.static('static')); // For serving static files
 app.use(express.urlencoded({ extended: true })); // To extract the data from the website to the app.js file
@@ -160,6 +162,46 @@ app.get('/download', (req, res) => {
   const fileStream = fs.createReadStream(resolvedPath);
   fileStream.pipe(res);
 });
+
+
+// Configure Multer for file upload
+const upload = multer({
+  dest: 'uploads/' // Destination directory for uploaded files
+});
+
+// Endpoint to upload a file
+app.post('/upload', upload.single('file'), (req, res) => {
+  const uploadedFile = req.file;
+  const destinationPath = __dirname; // Path where the file should be uploaded
+
+  if (!destinationPath) {
+      // If destination path is not provided
+      fs.unlinkSync(uploadedFile.path); // Remove the uploaded file
+      return res.status(400).send('Destination path is missing.');
+  }
+
+  // Resolve destination path
+  const resolvedPath = path.resolve(destinationPath);
+
+  // Check if the file already exists at the destination path
+  if (fs.existsSync(path.join(resolvedPath, 'data.xlsx'))) {
+      // If file already exists, change the name of the existing file
+      const timestamp = Date.now();
+      const newName = `${path.parse('data.xlsx').name}_${timestamp}${path.extname(uploadedFile.originalname)}`;
+
+      // Rename the existing file
+      fs.renameSync(path.join(resolvedPath, 'data.xlsx'), path.join(resolvedPath, newName));
+      // Move the uploaded file to the destination with its original name
+      fs.renameSync(uploadedFile.path, path.join(resolvedPath, 'data.xlsx'));
+
+      return res.status(200).send(`File renamed and uploaded successfully as ${'data.xlsx'}`);
+  }
+
+  // If file doesn't exist at the destination path, move the uploaded file to the destination
+  fs.renameSync(uploadedFile.path, path.join(resolvedPath, 'data.xlsx'));
+  res.status(200).send('File uploaded successfully.');
+});
+
 
 app.use(express.static(path.join(__dirname, "./Frontend/build")));
 app.get("*", function (_, res) {

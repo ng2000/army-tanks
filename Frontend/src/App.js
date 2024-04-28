@@ -7,7 +7,7 @@ import Solutions from './solutions/Solutions';
 import ProductFeatures from "./productFeatures/ProductFeatures";
 import Banner from './banner/Banner';
 import ApplyForAccess from "./applyForAccess/ApplyForAccess";
-import Security from  "./security/Security";
+import FileUpload from  "./fileUpload/FileUpload";
 import Footer from "./footer/Footer"
 
 export default function App() { 
@@ -15,7 +15,7 @@ export default function App() {
       <div className="App"> 
 	      <NavbarComponent/>
         <Routes>
-          <Route path ="/" element= {<><Banner /> </>}/>
+          <Route path ="/" element= {<><Banner /> <FileUpload /></>}/>
           <Route path ="/add" element= {<ApplyForAccess />}/> 
         </Routes> 
         <Footer />
