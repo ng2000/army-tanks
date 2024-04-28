@@ -5,12 +5,14 @@ import BarGraph from './BarGraph';
 
 const Analytics = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true); // State to manage loading indicator
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("/allData");
         setData(response.data);
+        setLoading(false); // Set loading to false after data is fetched
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -19,13 +21,19 @@ const Analytics = () => {
     fetchData();
   }, []);
 
-  console.log("data is ", data); // Corrected console.log statement
+  // Display loading indicator while data is being fetched
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div>
-      {/* Render your chart components */}
-      <BarGraph data={data} />
-      <PieChart data={data} /> {/* Pass data to PieChart */}
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'row' ,marginTop: '40px' ,marginBottom: '40px'}}>
+      <div style={{ marginRight: '80px' }}>
+        <PieChart data={data} />
+      </div>
+      <div style={{ marginLeft: '80px' }}>
+        <BarGraph data={data} />
+      </div>
     </div>
   );
 };
