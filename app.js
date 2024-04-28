@@ -137,6 +137,29 @@ app.get("/allData", function (_, res) {
   res.json(jsonData); // Send the JSON data as response
 });
 
+// Endpoint to download a file
+app.get('/download', (req, res) => {
+  const filePath = 'data.xlsx';
+
+  if (!filePath) {
+      return res.status(400).send('File path is missing.');
+  }
+
+  const resolvedPath = path.resolve(__dirname, filePath);
+
+  // Check if the file exists
+  if (!fs.existsSync(resolvedPath)) {
+      return res.status(404).send('File not found.');
+  }
+
+  // Set the proper content type for the response
+  res.setHeader('Content-disposition', 'attachment; filename=' + path.basename(resolvedPath));
+  res.setHeader('Content-type', 'application/octet-stream');
+
+  // Create a read stream from the file and pipe it to the response
+  const fileStream = fs.createReadStream(resolvedPath);
+  fileStream.pipe(res);
+});
 
 app.use(express.static(path.join(__dirname, "./Frontend/build")));
 app.get("*", function (_, res) {
