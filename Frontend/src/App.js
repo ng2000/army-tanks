@@ -2,8 +2,8 @@
 // export default App;
 import { Routes, Route } from "react-router-dom";
 import NavbarComponent from "./navbar/Navbar";
-import Banner from './banner/DataGrid';
-import ApplyForAccess from "./applyForAccess/ApplyForAccess";
+import Banner from './dataGrid/DataGrid';
+import ApplyForAccess from "./addTank/AddTank";
 import FileUploadImport from "./fileUploadImport/FileUploadImport";
 import Footer from "./footer/Footer"
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './ApplyForAccess.css';
+import './AddTank.css';
 import { Spinner } from 'react-bootstrap';
 
-export default function ApplyForAccess() {
+export default function AddTank() {
   const [formData, setFormData] = useState({
     unit: '',
     typeOfEquipment: '',
