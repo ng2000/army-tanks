@@ -12,7 +12,7 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import "./Banner.css";
 
- export default function Banner(){
+export default function Banner() {
   const [rowData, setRowData] = useState();
 
   const [columnDefs, setColumnDefs] = useState([
@@ -29,12 +29,16 @@ import "./Banner.css";
     };
   }, []);
   const onGridReady = useCallback((params) => {
-      params.columnApi.autoSizeAllColumns();
-try {
+    try {
       fetch('/allData')
-      .then((resp) => resp.json())
-       .then((data) => {setRowData(data)}
-       )
+        .then((resp) => resp.json())
+        .then((data) => { 
+          setRowData(data);
+          // Add a slight delay before autosizing columns
+          setTimeout(() => {
+            params.api.sizeColumnsToFit();
+          }, 100);
+        });
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -43,14 +47,14 @@ try {
     <div>
       <div
         className=
-          "ag-theme-quartz-dark gridClass"
+        "ag-theme-quartz-dark gridClass"
       >
         <AgGridReact
           rowData={rowData}
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
           className="gridClass"
-          pagination ={true}
+          pagination={true}
           onGridReady={onGridReady}
         />
       </div>
