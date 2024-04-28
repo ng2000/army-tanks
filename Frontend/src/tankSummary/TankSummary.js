@@ -130,6 +130,23 @@ const fieldMap = {
                                { field: "Date Of Issue" },
                                { field: "Eqpt Status" },
                              ]);
+
+       const [columnDefs10, setColumnDefs10] = useState([
+                                      { field: "BA/REG NO.", minWidth: 170 },
+                                      { field: "KM/HRS" },
+                                      { field: "KM/HRS" },
+                                      { field: "CHASIS NO" },
+                                      { field: "KM/HRS" },
+                                      { field: "KM/HRS" },
+                                      { field: "DATE OF INDUCTION" },
+                                      { field: "MAKE/TYPE" },
+                                                                            { field: "ISSUE TYPE" },
+                                                                            { field: "USER UNIT" },
+                                                                            { field: "EQPT STATUS" },
+                                                                            { field: "BOH/ORG" },
+                                                                            { field: "BOH DATE" },
+                                                                            { field: "BOH KM/HRS" },
+                                    ]);
   const defaultColDef = useMemo(() => {
     return {
       editable: true,
@@ -175,6 +192,19 @@ const fieldMap = {
                 ))}
             </select>
     </div>
+
+    <div className="center-grid">
+          <div className="ag-theme-quartz-dark gridClass center-grid">
+            <AgGridReact
+              rowData={filteredRowData}
+              columnDefs={columnDefs10}
+              defaultColDef={defaultColDef}
+              className="gridClass"
+              pagination={true}
+              onGridReady={onGridReady}
+            />
+          </div>
+        </div>
 
     <div className="center-grid">
       <div className="ag-theme-quartz-dark gridClass center-grid">
@@ -312,6 +342,18 @@ const fieldMap = {
                                                 />
                                               </div>
                                    </div>
+               <div className="center-grid">
+                                                             <div className="ag-theme-quartz-dark gridClass center-grid">
+                                                               <AgGridReact
+                                                                 rowData={filteredRowData}
+                                                                 columnDefs={columnDefs10}
+                                                                 defaultColDef={defaultColDef}
+                                                                 className="gridClass"
+                                                                 pagination={true}
+                                                                 onGridReady={onGridReady}
+                                                               />
+                                                             </div>
+                                                  </div>
     </div>
   );
 };
