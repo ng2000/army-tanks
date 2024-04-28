@@ -2,19 +2,31 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 
 const PieChart = ({ data }) => {
+  const uniqueTypes = [...new Set(data.map(item => item['Type of Eqpt']))];
+  const typeCounts = uniqueTypes.map(type => ({
+    type,
+    count: data.filter(item => item['Type of Eqpt'] === type).length,
+  }));
+
+  const labels = typeCounts.map(item => item.type);
+  const counts = typeCounts.map(item => item.count);
+
+  // Function to generate random colors
+  const generateRandomColor = () => {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgba(${r}, ${g}, ${b}, 0.6)`;
+  };
+
+  // Generate colors dynamically based on the number of unique types
+  const backgroundColors = Array.from({ length: uniqueTypes.length }, generateRandomColor);
+
   const chartData = {
-    labels: ['SER', 'EOA', 'Ser'],
+    labels: labels,
     datasets: [{
-      data: [
-        data.filter(item => item['SER/R2/EOA/VOR'] === 'SER').length,
-        data.filter(item => item['SER/R2/EOA/VOR'] === 'EOA').length,
-        data.filter(item => item['SER/R2/EOA/VOR'] === 'Ser').length,
-      ],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.6)',
-        'rgba(54, 162, 235, 0.6)',
-        'rgba(255, 206, 86, 0.6)',
-      ],
+      data: counts,
+      backgroundColor: backgroundColors,
     }],
   };
 

@@ -1,17 +1,29 @@
-// BarGraph.js
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
 const BarGraph = ({ data }) => {
+  // Extracting unique types of equipment and their counts
+  const equipmentCounts = data.reduce((counts, item) => {
+    const typeOfEqpt = item['Type of Eqpt'];
+    counts[typeOfEqpt] = (counts[typeOfEqpt] || 0) + 1;
+    return counts;
+  }, {});
+
+  // Extracting labels and data for the chart
+  const labels = Object.keys(equipmentCounts);
+  const dataPoints = Object.values(equipmentCounts);
+
+  // Generating random colors for each label
+  const colors = labels.map(() => {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16); // Generate a random hex color code
+  });
+
   const chartData = {
-    labels: ['Unit 1A', 'Unit 1B', 'Unit 1C', 'Unit 1D', 'Unit 1E'],
+    labels: labels,
     datasets: [{
-      label: 'Engine Hours',
-      data: [
-        data.reduce((acc, item) => acc + item['Eng Hrs'], 0),
-        // You can add similar reducers for other units or data points
-      ],
-      backgroundColor: 'rgba(75, 192, 192, 0.6)',
+      label: 'Count',
+      data: dataPoints,
+      backgroundColor: colors,
     }],
   };
 
