@@ -5,8 +5,6 @@ import React, {
   useState,
   StrictMode,
 } from "react";
-import { createRoot } from "react-dom/client";
-import axios from 'axios';
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
@@ -32,7 +30,7 @@ export default function DataGrid() {
     try {
       fetch('/allData')
         .then((resp) => resp.json())
-        .then((data) => { 
+        .then((data) => {
           setRowData(data);
           // Add a slight delay before autosizing columns
           setTimeout(() => {

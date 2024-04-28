@@ -11,7 +11,7 @@ export default function FileUploadImport() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    
+
     if (!selectedFile) {
       alert('Please select a file.');
       return;
@@ -34,17 +34,17 @@ export default function FileUploadImport() {
   };
 
   return (
-    <div style={{minHeight:'475px'}}>
-    <div style={{ margin: '20px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px' }}>
-      <h2 style={{ marginBottom: '20px' }}>File Upload</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div style={{ marginBottom: '20px' }}>
-          <input type="file" onChange={handleFileChange} />
-        </div>
-        <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#8b5cf6', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Upload</button>
-      </form>
-      {uploadStatus && <p style={{ marginTop: '20px' }}>{uploadStatus}</p>}
-    </div>
+    <div style={{ minHeight: '475px' }}>
+      <div style={{ margin: '20px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px' }}>
+        <h2 style={{ marginBottom: '20px' }}>File Upload</h2>
+        <form onSubmit={handleFormSubmit}>
+          <div style={{ marginBottom: '20px' }}>
+            <input type="file" onChange={handleFileChange} />
+          </div>
+          <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#8b5cf6', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Upload</button>
+        </form>
+        {uploadStatus && <p style={{ marginTop: '20px' }}>{uploadStatus}</p>}
+      </div>
     </div>
   );
 }
