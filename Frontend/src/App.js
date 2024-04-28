@@ -2,7 +2,7 @@
 // export default App;
 import { Routes, Route } from "react-router-dom";
 import NavbarComponent from "./navbar/Navbar";
-import Banner from './banner/Banner';
+import Banner from './banner/DataGrid';
 import ApplyForAccess from "./applyForAccess/ApplyForAccess";
 import FileUploadImport from "./fileUploadImport/FileUploadImport";
 import Footer from "./footer/Footer"

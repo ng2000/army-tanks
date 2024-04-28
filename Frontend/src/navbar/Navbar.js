@@ -7,8 +7,7 @@ const NavbarComponent = () => (
   <Navbar expand="lg" className="navbar-bgc">
     <Container>
       <Navbar.Brand href="/" className="navbar-logo">
-      {/* <img className="logo" src="../img/pica_navbar_icon.jpeg" alt="logo"/> */}
-      <p>Army - Tanks</p>
+      <img className="logo" src="../img/tankNav.png" alt="logo"/>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center">
