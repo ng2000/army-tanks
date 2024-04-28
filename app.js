@@ -90,7 +90,7 @@ app.post("/apply", async (req, res) => {
       console.log("newRowRef", newRowRef);
       console.log("dataValues.length ",dataValues.length);
       const cellRef = xlsx.utils.encode_cell({ r: newRowRef, c: 0 });
-      worksheet[cellRef] = { v: newRowRef };
+      worksheet[cellRef] = { v: newRowRef.toString() };
       worksheet[cellRef].t = 's';
       for (let i = 0; i <= dataValues.length; i++) {
         const cellRef = xlsx.utils.encode_cell({ r: newRowRef, c: i+1 });
