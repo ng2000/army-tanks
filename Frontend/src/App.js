@@ -7,6 +7,7 @@ import ApplyForAccess from "./addTank/AddTank";
 import FileUploadImport from "./fileUploadImport/FileUploadImport";
 import Footer from "./footer/Footer"
 import Analytics from "./graphs/Analytics";
+import DueDataGrid from "./dueDataGrid/DueDataGrid";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/analytics" element={<><Analytics /></>} />
         <Route path="/import" element={<><FileUploadImport /></>} />
         <Route path="/add" element={<ApplyForAccess />} />
+        <Route path="/due" element={<DueDataGrid />} />
       </Routes>
       <Footer />
     </div>
