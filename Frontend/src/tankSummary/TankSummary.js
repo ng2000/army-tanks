@@ -244,20 +244,19 @@ export default function TankSummary({ baNo }) {
 
 
             <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClass center-grid">
+                <div className="ag-theme-quartz-dark gridClassSingleRow center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
                         columnDefs={columnDefs10}
                         defaultColDef={defaultColDef}
-                        className="gridClass"
-                        pagination={true}
+                        className="gridClassSingleRow"
                         onGridReady={onGridReady}
                     />
                 </div>
             </div>
 
             <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClass center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
                         columnDefs={columnDefs}
@@ -270,7 +269,7 @@ export default function TankSummary({ baNo }) {
             </div>
 
             <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClass center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
                         columnDefs={columnDefs1}
@@ -282,7 +281,7 @@ export default function TankSummary({ baNo }) {
                 </div>
             </div>
             <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClass center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
                         columnDefs={columnDefs1}
@@ -294,7 +293,7 @@ export default function TankSummary({ baNo }) {
                 </div>
             </div>
             <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClass center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
                         columnDefs={columnDefs2}
@@ -306,7 +305,7 @@ export default function TankSummary({ baNo }) {
                 </div>
             </div>
             <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClass center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
                         columnDefs={columnDefs3}
@@ -318,7 +317,7 @@ export default function TankSummary({ baNo }) {
                 </div>
             </div>
             <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClass center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
                         columnDefs={columnDefs4}
@@ -331,7 +330,7 @@ export default function TankSummary({ baNo }) {
             </div>
 
             <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClass center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
                         columnDefs={columnDefs5}
@@ -344,7 +343,7 @@ export default function TankSummary({ baNo }) {
             </div>
 
             <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClass center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
                         columnDefs={columnDefs6}
@@ -356,7 +355,7 @@ export default function TankSummary({ baNo }) {
                 </div>
             </div>
             <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClass center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
                         columnDefs={columnDefs7}
@@ -368,7 +367,7 @@ export default function TankSummary({ baNo }) {
                 </div>
             </div>
             <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClass center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
                         columnDefs={columnDefs8}
@@ -381,7 +380,7 @@ export default function TankSummary({ baNo }) {
             </div>
 
             <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClass center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
                         columnDefs={columnDefs9}
@@ -393,7 +392,7 @@ export default function TankSummary({ baNo }) {
                 </div>
             </div>
             <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClass center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
                         columnDefs={columnDefs10}
