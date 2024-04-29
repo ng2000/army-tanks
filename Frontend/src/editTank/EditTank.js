@@ -189,7 +189,7 @@ export default function EditTank({ inputData }) {
   return (
     <div className=' contact-div'>
       <div className='form-base'>
-        <h3 className='plain-h3'>Add New Tank</h3>
+        <h3 className='plain-h3'>Update Tank</h3>
         <div className='w-form'>
           <form
             id='wf-form-Register-Form'

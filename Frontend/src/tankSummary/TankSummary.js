@@ -196,12 +196,12 @@ export default function TankSummary() {
     return (
         <div>
             {/* Button to open the modal */}
-            <Button variant="primary" onClick={handleOpenEditModal}>Edit Tank</Button>
+            <Button variant="primary" onClick={handleOpenEditModal}>Update Tank</Button>
 
             {/* Modal for EditTank component */}
             <Modal show={showEditModal} onHide={handleCloseEditModal} size="xl">
                 <Modal.Header closeButton>
-                    <Modal.Title>Edit Tank</Modal.Title>
+                    <Modal.Title>Update Tank</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {/* Render the EditTank component here */}
