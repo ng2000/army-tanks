@@ -19,7 +19,7 @@ export default function App() {
         <Route path="/analytics" element={<><Analytics /></>} />
         <Route path="/import" element={<><FileUploadImport /></>} />
         <Route path="/add" element={<ApplyForAccess />} />
-        <Route path="/due" element={<DueDataGrid />} />
+        <Route path="/search" element={<DueDataGrid />} />
         <Route path="/summary" element={<TankSummary baNo={'05X 4H'}/>} />
       </Routes>
       <Footer />

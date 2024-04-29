@@ -193,12 +193,14 @@ export default function DueDataGrid() {
 
   // Helper function to parse date strings into Date objects
   const parseDateString = (dateString) => {
-    const dateParts = dateString.split("-");
-    if (dateParts.length === 3) {
-      const day = parseInt(dateParts[0], 10);
-      const month = parseInt(dateParts[1], 10) - 1; // Month is 0-based
-      const year = parseInt(dateParts[2], 10);
-      return new Date(year, month, day);
+    if(dateString) {
+      const dateParts = dateString.split("-");
+      if (dateParts.length === 3) {
+        const day = parseInt(dateParts[0], 10);
+        const month = parseInt(dateParts[1], 10) - 1; // Month is 0-based
+        const year = parseInt(dateParts[2], 10);
+        return new Date(year, month, day);
+      }
     }
     return null; // Return null for invalid date strings
   };

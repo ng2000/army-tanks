@@ -18,6 +18,7 @@ const NavbarComponent = () => (
           <Nav.Link href="/import" className="navbar11_dropdown-toggle">Import</Nav.Link>
           <Nav.Link href="/download" className="navbar11_dropdown-toggle">Export</Nav.Link>
           <Nav.Link href="/analytics" className="navbar11_dropdown-toggle">Analytics</Nav.Link>
+          <Nav.Link href="/search" className="navbar11_dropdown-toggle">Search</Nav.Link>
         </Nav>
       </Navbar.Collapse>
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
