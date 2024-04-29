@@ -204,8 +204,6 @@ export default function TankSummary({ baNo }) {
 
     return (
         <div>
-            {/* Button to open the modal */}
-            <Button variant="primary" onClick={handleOpenEditModal}>Update Tank</Button>
 
             {/* Modal for EditTank component */}
             <Modal show={showEditModal} onHide={handleCloseEditModal} size="xl">
@@ -214,19 +212,25 @@ export default function TankSummary({ baNo }) {
                 </Modal.Header>
                 <Modal.Body>
                     {/* Render the EditTank component here */}
-                    {filteredRowData && filteredRowData.length > 0 && <EditTank inputData={filteredRowData[filteredRowData.length -1]} />}
+                    {filteredRowData && filteredRowData.length > 0 && <EditTank inputData={filteredRowData[filteredRowData.length - 1]} />}
                 </Modal.Body>
             </Modal>
-            <div className="controls">
-                <label htmlFor="bano-select">Select BA No:</label>
-                <select id="bano-select" value={selectedBANo || ""} onChange={handleSelectBANo}>
-                    {/* Populate options with unique BA No values */}
-                    {rowData &&
-                        Array.from(new Set(rowData.map(row => row["BA No"]))).map(bano => (
-                            <option key={bano} value={bano}>{bano}</option>
-                        ))}
-                </select>
+            <div className="controls" style={{ margin: '10px', padding: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div>
+                    <label htmlFor="bano-select">Select BA No:</label>
+                    <select id="bano-select" value={selectedBANo || ""} onChange={handleSelectBANo}>
+                        {/* Populate options with unique BA No values */}
+                        {rowData &&
+                            Array.from(new Set(rowData.map(row => row["BA No"]))).map(bano => (
+                                <option key={bano} value={bano}>{bano}</option>
+                            ))}
+                    </select>
+                </div>
+
+                {/* Button to open the modal */}
+                <Button variant="primary" onClick={handleOpenEditModal}>Update Tank</Button>
             </div>
+
 
             <div className="center-grid">
                 <div className="ag-theme-quartz-dark gridClass center-grid">
