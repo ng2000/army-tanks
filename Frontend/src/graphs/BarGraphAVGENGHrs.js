@@ -88,7 +88,7 @@ const BarGraphAVGENGHrs = ({ data }) => {
         },
     };
 
-    return <Bar data={chartData} options={options} />;
+    return <div><h1 style={{textAlign: "center"}}>AVG ENG HRS</h1><Bar data={chartData} options={options} /></div>;
 };
 
 export default BarGraphAVGENGHrs;
