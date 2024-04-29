@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PieChart from './PieChart';
-import BarGraph from './BarGraph';
+import BarGraphAVGENGHrs from "./BarGraphAVGENGHrs";
 
 const Analytics = () => {
   const [data, setData] = useState([]);
@@ -27,13 +27,12 @@ const Analytics = () => {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'row' ,marginTop: '40px' ,marginBottom: '40px'}}>
-      <div style={{ marginRight: '80px' }}>
-        <PieChart data={data} />
-      </div>
-      <div style={{ marginLeft: '80px' }}>
-        <BarGraph data={data} />
-      </div>
+    <div className="row">
+        <div className="col-3">
+        <BarGraphAVGENGHrs data={data} />
+        </div>
+        <div className="col-3"></div>
+        <div className="col-3"></div>
     </div>
   );
 };
