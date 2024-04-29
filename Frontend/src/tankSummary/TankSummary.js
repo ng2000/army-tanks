@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState, StrictMode } from "react";
+import React, { useCallback, useMemo, useRef, useState, StrictMode, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { Button, Modal } from 'react-bootstrap';
 import "ag-grid-community/styles/ag-grid.css";
@@ -6,7 +6,7 @@ import "ag-grid-community/styles/ag-theme-quartz.css";
 import "./TankSummary.css";
 import EditTank from "../editTank/editTank";
 
-export default function TankSummary() {
+export default function TankSummary({ baNo }) {
     const [rowData, setRowData] = useState();
     const [selectedBANo, setSelectedBANo] = useState(null);
     const [showEditModal, setShowEditModal] = useState(false);
@@ -174,6 +174,7 @@ export default function TankSummary() {
                 .then((resp) => resp.json())
                 .then((data) => {
                     setRowData(data);
+                    setSelectedBANo(baNo);
                     // Add a slight delay before autosizing columns
                     setTimeout(() => {
                         params.api.sizeColumnsToFit();
@@ -189,8 +190,16 @@ export default function TankSummary() {
     }, []);
 
     const filteredRowData = useMemo(() => {
+        console.log(selectedBANo)
+
         if (!selectedBANo) return rowData;
-        return rowData.filter(row => row["BA No"] === selectedBANo);
+        // return rowData.filter(row => row["BA No"] === selectedBANo);
+        return rowData.filter(row => {
+            // Trim whitespace from each "BA No" value before comparing
+            const baNoTrimmed = row["BA No"].trim();
+            const selectedBANoTrimmed = selectedBANo.trim();
+            return baNoTrimmed === selectedBANoTrimmed;
+        });
     }, [selectedBANo, rowData]);
 
     return (
@@ -211,7 +220,6 @@ export default function TankSummary() {
             <div className="controls">
                 <label htmlFor="bano-select">Select BA No:</label>
                 <select id="bano-select" value={selectedBANo || ""} onChange={handleSelectBANo}>
-                    <option value="">All</option>
                     {/* Populate options with unique BA No values */}
                     {rowData &&
                         Array.from(new Set(rowData.map(row => row["BA No"]))).map(bano => (

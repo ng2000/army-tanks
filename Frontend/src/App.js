@@ -20,7 +20,7 @@ export default function App() {
         <Route path="/import" element={<><FileUploadImport /></>} />
         <Route path="/add" element={<ApplyForAccess />} />
         <Route path="/due" element={<DueDataGrid />} />
-        <Route path="/summary" element={<TankSummary />} />
+        <Route path="/summary" element={<TankSummary baNo={'05X 4H'}/>} />
       </Routes>
       <Footer />
     </div>
