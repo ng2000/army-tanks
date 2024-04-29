@@ -8,6 +8,7 @@ import EditTank from "../editTank/editTank";
 
 export default function TankSummary({ baNo }) {
     const [rowData, setRowData] = useState();
+    const [rowDataForUnique, setRowDataForUnique] = useState();
     const [selectedBANo, setSelectedBANo] = useState(null);
     const [showEditModal, setShowEditModal] = useState(false);
 
@@ -136,21 +137,13 @@ export default function TankSummary({ baNo }) {
     ]);
 
     const [columnDefs10, setColumnDefs10] = useState([
-        { field: "BA No", headerName: "BA/REG NO.", minWidth: 170 },
-        { field: "KM/HRS" },
-        { field: "KM/HRS" },
-        { field: "CHASIS NO" },
-        { field: "KM/HRS" },
-        { field: "KM/HRS" },
-        { field: "DATE OF INDUCTION" },
-        { field: "MAKE/TYPE" },
-        { field: "ISSUE TYPE" },
-        { field: "USER UNIT" },
-        { field: "EQPT STATUS" },
-        { field: "BOH/ORG" },
-        { field: "BOH DATE" },
-        { field: "BOH KM/HRS" },
+        { field: "field", cellStyle: {fontWeight: 'bold'} },
+        { field: "value" },
     ]);
+
+    const gridOptions = {
+        headerHeight: 0 // Set header height to 0 to hide headers
+      };
     const defaultColDef = useMemo(() => {
         return {
             editable: true,
@@ -174,6 +167,7 @@ export default function TankSummary({ baNo }) {
                 .then((resp) => resp.json())
                 .then((data) => {
                     setRowData(data);
+                      
                     setSelectedBANo(baNo);
                     // Add a slight delay before autosizing columns
                     setTimeout(() => {
@@ -198,6 +192,24 @@ export default function TankSummary({ baNo }) {
             // Trim whitespace from each "BA No" value before comparing
             const baNoTrimmed = row["BA No"].trim();
             const selectedBANoTrimmed = selectedBANo.trim();
+            if(baNoTrimmed === selectedBANoTrimmed) {
+                const tempData = row;
+                const uniqueData = [
+                    { field: "BA/REG NO.", value: tempData["BA No"]},
+                    { field: "KM/HRS", value: tempData["KM/HRS"]},
+                    { field: "Chassis No", value: tempData["Chassis No"]},
+                    { field: "DATE OF INDUCTION", value: tempData["DATE OF INDUCTION"] },
+                    { field: "MAKE/TYPE", value: tempData["MAKE/TYPE"]},
+                    { field: "ISSUE TYPE", value: tempData["ISSUE TYPE"]},
+                    { field: "USER UNIT", value: tempData["USER UNIT"]},
+                    { field: "EQPT STATUS", value: tempData["EQPT STATUS"]},
+                    { field: "BOH/ORG", value: tempData["BOH/ORG"]},
+                    { field: "BOH DATE", value: tempData["BOH DATE"]},
+                    { field: "BOH KM/HRS", value: tempData["BOH KM/HRS"]},
+                  ];
+
+                  setRowDataForUnique(uniqueData);
+            }
             return baNoTrimmed === selectedBANoTrimmed;
         });
     }, [selectedBANo, rowData]);
@@ -246,11 +258,12 @@ export default function TankSummary({ baNo }) {
             <div className="center-grid">
                 <div className="ag-theme-quartz-dark gridClassSingleRow center-grid">
                     <AgGridReact
-                        rowData={filteredRowData}
+                        rowData={rowDataForUnique}
                         columnDefs={columnDefs10}
                         defaultColDef={defaultColDef}
                         className="gridClassSingleRow"
                         onGridReady={onGridReady}
+                        gridOptions={gridOptions}
                     />
                 </div>
             </div>
