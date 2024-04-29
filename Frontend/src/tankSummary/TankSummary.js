@@ -136,7 +136,7 @@ export default function TankSummary({ baNo }) {
     ]);
 
     const [columnDefs10, setColumnDefs10] = useState([
-        { field: "BA/REG NO.", minWidth: 170 },
+        { field: "BA No", headerName: "BA/REG NO.", minWidth: 170 },
         { field: "KM/HRS" },
         { field: "KM/HRS" },
         { field: "CHASIS NO" },
@@ -214,7 +214,7 @@ export default function TankSummary({ baNo }) {
                 </Modal.Header>
                 <Modal.Body>
                     {/* Render the EditTank component here */}
-                    {rowData && <EditTank inputData={rowData[0]} />}
+                    {filteredRowData && filteredRowData.length > 0 && <EditTank inputData={filteredRowData[filteredRowData.length -1]} />}
                 </Modal.Body>
             </Modal>
             <div className="controls">
