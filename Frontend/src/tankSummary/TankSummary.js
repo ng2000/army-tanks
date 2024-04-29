@@ -3,6 +3,7 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import "./TankSummary.css";
+import EditTank from "../editTank/editTank";
 
 export default function TankSummary() {
   const [rowData, setRowData] = useState();
@@ -181,6 +182,7 @@ const fieldMap = {
 
   return (
     <div>
+       {rowData && <EditTank inputData={rowData[0]}></EditTank>}
     <div className="controls">
             <label htmlFor="bano-select">Select BA No:</label>
             <select id="bano-select" value={selectedBANo || ""} onChange={handleSelectBANo}>
