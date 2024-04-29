@@ -15,7 +15,7 @@ export default function App() {
     <div className="App">
       <NavbarComponent />
       <Routes>
-        <Route path="/" element={<><Analytics /> <Banner /></>} />
+        <Route path="/" element={<><Banner /></>} />
         <Route path="/analytics" element={<><Analytics /></>} />
         <Route path="/import" element={<><FileUploadImport /></>} />
         <Route path="/add" element={<ApplyForAccess />} />

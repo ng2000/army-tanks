@@ -228,7 +228,18 @@ export default function TankSummary({ baNo }) {
                 </div>
 
                 {/* Button to open the modal */}
-                <Button variant="primary" onClick={handleOpenEditModal}>Update Tank</Button>
+                <Button style={{
+                    backgroundColor: "rgb(139 92 246)", // Red background color
+                    color: "white", // White text color
+                    border: "none", // No border
+                    borderRadius: "4px", // Rounded corners
+                    cursor: "pointer", // Pointer cursor on hover
+                    fontSize: "14px", // Font size
+                    fontWeight: "bold", // Bold font weight
+                    marginRight: "10px", // Add some margin to the right
+                    marginTop: "10px", // Add some margin to the right
+                    marginLeft: "10px", // Add some margin to the right
+                }} onClick={handleOpenEditModal}>Update Tank</Button>
             </div>
 
 

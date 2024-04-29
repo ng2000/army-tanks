@@ -3,6 +3,7 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import "./DataGrid.css";
+import TankSummary from "../tankSummary/TankSummary";
 
 // Define ButtonRenderer component before referencing it
 const ButtonRenderer = ({ onClick, data }) => {
@@ -23,11 +24,18 @@ const ButtonRenderer = ({ onClick, data }) => {
 
 export default function DataGrid() {
   const [rowData, setRowData] = useState();
+  const [selectedBANo, setSelectedBANo] = useState(null); // State to track selected BA number
+  const [showSummary, setShowSummary] = useState(false); // State to track whether to show summary
 
-  // Define the handleClick function before using it
-  const handleClick = (rowData) => {
+
+
+  const handleClick = useCallback((rowData) => {
     console.log("Row data:", rowData);
-  };
+    console.log("Row data:", rowData["BA No"]);
+
+    setSelectedBANo(rowData["BA No"]); // Set selected BA number
+    setShowSummary(true); // Show summary component
+  }, []);
 
   const [columnDefs, setColumnDefs] = useState([
     { field: "SNO", minWidth: 170 },
@@ -85,18 +93,43 @@ export default function DataGrid() {
   }), []);
 
   return (
-    <div className="center-grid">
-      <div className="ag-theme-quartz-dark gridClass center-grid">
-        <AgGridReact
-          rowData={rowData}
-          columnDefs={columnDefs}
-          defaultColDef={defaultColDef}
-          frameworkComponents={frameworkComponents}
-          className="gridClass"
-          pagination={true}
-          onGridReady={onGridReady}
-        />
-      </div>
+    <div>
+      {showSummary ? (
+        <div>
+<button
+  onClick={() => setShowSummary(false)}
+  style={{
+    backgroundColor: "rgb(139 92 246)", // Red background color
+    color: "white", // White text color
+    border: "none", // No border
+    borderRadius: "4px", // Rounded corners
+    cursor: "pointer", // Pointer cursor on hover
+    fontSize: "14px", // Font size
+    fontWeight: "bold", // Bold font weight
+    marginRight: "10px", // Add some margin to the right
+    marginTop: "10px", // Add some margin to the right
+    marginLeft: "10px", // Add some margin to the right
+  }}
+>
+  Back to Grid
+</button>          <TankSummary baNo={selectedBANo} />
+        </div>
+      ) : (
+        <div className="center-grid">
+
+        <div className="ag-theme-quartz-dark gridClass center-grid">
+          <AgGridReact
+            rowData={rowData}
+            columnDefs={columnDefs}
+            defaultColDef={defaultColDef}
+            frameworkComponents={{ ButtonRenderer }}
+            className="gridClass"
+            pagination={true}
+            onGridReady={onGridReady}
+          />
+        </div>
+        </div>
+      )}
     </div>
   );
 }
