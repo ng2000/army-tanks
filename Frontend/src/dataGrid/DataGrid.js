@@ -1,11 +1,33 @@
-import React, { useCallback, useMemo, useRef, useState, StrictMode } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import "./DataGrid.css";
 
+// Define ButtonRenderer component before referencing it
+const ButtonRenderer = ({ onClick, data }) => {
+  const handleClick = () => {
+    onClick(data); // Pass rowData to handleClick function
+  };
+  const buttonStyle = {
+    backgroundColor: "#007bff", // Blue background color
+    color: "white", // White text color
+    border: "none", // No border
+    borderRadius: "4px", // Rounded corners
+    cursor: "pointer", // Pointer cursor on hover
+    fontWeight: "bold", // Bold font weight
+  };
+
+  return <button style={buttonStyle} onClick={handleClick}>View</button>;
+};
+
 export default function DataGrid() {
   const [rowData, setRowData] = useState();
+
+  // Define the handleClick function before using it
+  const handleClick = (rowData) => {
+    console.log("Row data:", rowData);
+  };
 
   const [columnDefs, setColumnDefs] = useState([
     { field: "SNO", minWidth: 170 },
@@ -13,6 +35,14 @@ export default function DataGrid() {
     { field: "Type of Eqpt" },
     { field: "Issue Type" },
     { field: "BA No" },
+    {
+      field: "actions",
+      headerName: "Summary",
+      cellRenderer: ButtonRenderer, // Corrected component name
+      cellRendererParams: {
+        onClick: handleClick,
+      },
+    },
   ]);
 
   const defaultColDef = useMemo(() => {
@@ -49,6 +79,11 @@ export default function DataGrid() {
     }
   }, []);
 
+  // Register the custom cell renderer as a framework component
+  const frameworkComponents = useMemo(() => ({
+    ButtonRenderer: ButtonRenderer, // Corrected component name
+  }), []);
+
   return (
     <div className="center-grid">
       <div className="ag-theme-quartz-dark gridClass center-grid">
@@ -56,6 +91,7 @@ export default function DataGrid() {
           rowData={rowData}
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
+          frameworkComponents={frameworkComponents}
           className="gridClass"
           pagination={true}
           onGridReady={onGridReady}
@@ -63,4 +99,4 @@ export default function DataGrid() {
       </div>
     </div>
   );
-};
+}
