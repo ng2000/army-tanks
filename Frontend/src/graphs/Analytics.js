@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PieChart from './PieChart';
 import BarGraphAVGENGHrs from "./BarGraphAVGENGHrs";
-
+import VintageGraph from "./VintageGraph";
 const Analytics = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true); // State to manage loading indicator
@@ -30,8 +30,11 @@ const Analytics = () => {
     <div className="row">
         <div className="col-3">
         <BarGraphAVGENGHrs data={data} />
+         <VintageGraph data={data} />
         </div>
-        <div className="col-3"></div>
+
+        <div className="col-3">
+        </div>
         <div className="col-3"></div>
     </div>
   );
