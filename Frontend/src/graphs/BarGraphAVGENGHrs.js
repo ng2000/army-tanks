@@ -35,7 +35,7 @@ const BarGraphAVGENGHrs = ({ data }) => {
             const engineType = item["Engine Org/OH"];
             console.log(engineType)
             if (engineType == "OH" || engineType == "Org") {
-                equipmentObj[engineType]["value"] += Number(item["Eng Km"]) || 0;
+                equipmentObj[engineType]["value"] += Number(item["Eng Hrs"]) || 0;
                 equipmentObj[engineType]["count"] += 1;
 
             }
