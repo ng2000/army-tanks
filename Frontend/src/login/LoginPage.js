@@ -16,6 +16,7 @@ const LoginPage = () => {
     if (username === 'admin' && password === 'admin') {
       localStorage.setItem('isLoggedIn', true);
       setIsLoggedIn(true);
+      window.location.reload();
     } else {
       setError('Invalid username or password');
     }
