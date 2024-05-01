@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import PieChart from './PieChart';
 import BarGraphAVGENGHrs from "./BarGraphAVGENGHrs";
 import VintageGraph from "./VintageGraph";
+import BarGraphAuthHeld from "./BarGraphAuthHeld";
+import PieChartEFCQTR from "./PieChartEFCQTR";
 const Analytics = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true); // State to manage loading indicator
@@ -34,6 +35,8 @@ const Analytics = () => {
         </div>
 
         <div className="col-3">
+            <BarGraphAuthHeld data={data}></BarGraphAuthHeld>
+            <PieChartEFCQTR data={data}></PieChartEFCQTR>
         </div>
         <div className="col-3"></div>
     </div>

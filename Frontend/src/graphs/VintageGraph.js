@@ -81,7 +81,8 @@ const VintageGraph = ({ data }) => {
     };
   }, [data]);
 
-  return <canvas ref={canvasRef} />;
+  return <div><h3 style={{textAlign: "center"}}>VINTAGE</h3><canvas ref={canvasRef} /></div>;
+
 };
 
 export default VintageGraph;
