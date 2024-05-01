@@ -5,6 +5,7 @@ import VintageGraph from "./VintageGraph";
 import BarGraphAuthHeld from "./BarGraphAuthHeld";
 import PieChartEFCQTR from "./PieChartEFCQTR";
 import BarGraphMSNReliabilityENG from "./BarGraphMSNReliabilityENG";
+import PieChartMSNBRL from "./PieChartMSNBRL";
 const Analytics = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true); // State to manage loading indicator
@@ -41,6 +42,7 @@ const Analytics = () => {
         </div>
         <div className="col-3">
             <BarGraphMSNReliabilityENG data={data}></BarGraphMSNReliabilityENG>
+            <PieChartMSNBRL data={data}></PieChartMSNBRL>
         </div>
     </div>
   );
