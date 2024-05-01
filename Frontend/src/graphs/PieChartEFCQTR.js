@@ -27,16 +27,14 @@ const PieChartEFCQTR = ({ data }) => {
   const labels = typeCounts.map(item => item.type);
   const counts = typeCounts.map(item => item.count);
 
-  // Function to generate random colors
-  const generateRandomColor = () => {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    return `rgba(${r}, ${g}, ${b}, 0.6)`;
-  };
-
-  // Generate colors dynamically based on the number of unique types
-  const backgroundColors = Array.from({ length: uniqueTypes.length }, generateRandomColor);
+  // Predefined set of visually appealing colors
+  const backgroundColors = [
+    '#FF6384', // Red
+    '#36A2EB', // Blue
+    '#FFCE56', // Yellow
+    '#4BC0C0', // Green
+    '#9966FF', // Purple
+  ];
 
   const chartData = {
     labels: labels,
@@ -46,7 +44,12 @@ const PieChartEFCQTR = ({ data }) => {
     }],
   };
 
-  return <Pie data={chartData} />;
+  return (
+    <div style={{ height: '300px' }}>
+      <h3 style={{ textAlign: "center" }}>EFC</h3>
+      <Pie data={chartData} />
+    </div>
+  );
 };
 
 export default PieChartEFCQTR;

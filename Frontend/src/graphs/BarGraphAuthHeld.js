@@ -50,7 +50,7 @@ const BarGraphAuthHeld = ({ data }) => {
             }],
         },
     };
-    return <div><h3 style={{textAlign: "center"}}>AUTH/HElD</h3><Bar data={chartData} options={options} /></div>;
+    return <div><h3 style={{textAlign: "center"}}>AUTH/HELD</h3><Bar data={chartData} options={options} /></div>;
 
 };
 
