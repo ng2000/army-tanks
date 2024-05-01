@@ -16,7 +16,7 @@ const VintageGraph = ({ data }) => {
     // Extract first two digits from BA No and group into intervals
     const intervalCounts = {};
     data.forEach(item => {
-      const firstTwoDigits = parseInt(item["BA No"].substring(0, 2));
+      const firstTwoDigits = parseInt(item["BA No"].trim().substring(0, 2));
       const decade = firstTwoDigits;
       console.log("decade ",decade)
       intervalCounts[decade] = (intervalCounts[decade] || 0) + 1;
@@ -60,9 +60,7 @@ const VintageGraph = ({ data }) => {
         datasets: [{
           label: 'Number of Items',
           data: count,
-          backgroundColor: 'rgba(255, 99, 132, 0.2)', // Change color as needed
-          borderColor: 'rgba(255, 99, 132, 1)', // Change color as needed
-          borderWidth: 1
+          backgroundColor: 'rgba(255, 99, 132, 0.5)', // Change color as needed
         }]
       },
       options: {
