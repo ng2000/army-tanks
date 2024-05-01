@@ -62,7 +62,7 @@ const BarGraphMSNReliabilityENG = ({ data }) => {
             }],
         },
     };
-    return <div><h3 style={{textAlign: "center"}}>MSN RLIABILITY(ENG)</h3><Bar data={chartData} options={options} /></div>;
+    return <div><h3 style={{textAlign: "center"}}>MSN RELIABILITY(ENG)</h3><Bar data={chartData} options={options} /></div>;
 
 };
 
