@@ -12,6 +12,8 @@ const Analytics = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedUnit, setSelectedUnit] = useState(null);
+    const [selectedDIV, setSelectedDIV] = useState(null);
+    const [selectedBDE, setSelectedBDE] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,14 +33,29 @@ const Analytics = () => {
         setSelectedUnit(event.target.value);
     }, []);
 
+    const handleSelectionChangeDIV = useCallback((event) => {
+        setSelectedDIV(event.target.value);
+    }, []);
+
+    const handleSelectionChangeBDE = useCallback((event) => {
+        setSelectedBDE(event.target.value);
+    }, []);
+
     const filteredRowData = useMemo(() => {
-        if (!selectedUnit) return data;
-        return data.filter(row => {
-            const unitTrimmed = row["Unit"].trim();
-            const selectedUnitTrimmed = selectedUnit.trim();
-            return unitTrimmed === selectedUnitTrimmed;
-        });
-    }, [selectedUnit, data]);
+        let filteredData = data;
+        
+        if (selectedUnit) {
+            filteredData = filteredData.filter(row => row["Unit"].trim() === selectedUnit.trim());
+        }
+        if (selectedDIV) {
+            filteredData = filteredData.filter(row => row["DIV"].trim() === selectedDIV.trim());
+        }
+        if (selectedBDE) {
+            filteredData = filteredData.filter(row => row["BDE"].trim() === selectedBDE.trim());
+        }
+
+        return filteredData;
+    }, [selectedUnit, selectedDIV, selectedBDE, data]);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -49,9 +66,30 @@ const Analytics = () => {
             <div>
                 <label htmlFor="Unit-select">Unit</label>
                 <select id="Unit-select" value={selectedUnit || ""} onChange={handleSelectionChangeUnit}>
+                    <option value="">All</option>
                     {data &&
                         Array.from(new Set(data.map(row => row["Unit"]))).map(unit => (
                             <option key={unit} value={unit}>{unit}</option>
+                        ))}
+                </select>
+            </div>
+            <div>
+                <label htmlFor="DIV-select">DIV</label>
+                <select id="DIV-select" value={selectedDIV || ""} onChange={handleSelectionChangeDIV}>
+                    <option value="">All</option>
+                    {data &&
+                        Array.from(new Set(data.map(row => row["DIV"]))).map(div => (
+                            <option key={div} value={div}>{div}</option>
+                        ))}
+                </select>
+            </div>
+            <div>
+                <label htmlFor="BDE-select">BDE</label>
+                <select id="BDE-select" value={selectedBDE || ""} onChange={handleSelectionChangeBDE}>
+                    <option value="">All</option>
+                    {data &&
+                        Array.from(new Set(data.map(row => row["BDE"]))).map(bde => (
+                            <option key={bde} value={bde}>{bde}</option>
                         ))}
                 </select>
             </div>
