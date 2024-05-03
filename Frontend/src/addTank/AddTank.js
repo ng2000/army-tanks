@@ -110,9 +110,9 @@ export default function AddTank() {
     gunPullBackRemarks: '',
   };
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState(
     initForm
-  });
+  );
 
   const fieldMap = {
     unit: 'Unit',
