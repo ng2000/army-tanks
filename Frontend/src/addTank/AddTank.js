@@ -260,9 +260,9 @@ export default function AddTank() {
       });
 
       if (res.status === 200) {
-        setFormData({
+        setFormData(
           initForm
-        });
+        );
         setSuccessMessage('Tank Details Added Successfully!');
       } else {
         setErrorMessage('Oops! Something went wrong while submitting the form.');
