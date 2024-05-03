@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 app.post("/apply", async (req, res) => {
   console.log("res = " + JSON.stringify(req.body));
   const fieldMap = {
+    sno: 'SNO',
     unit: 'Unit',
     typeOfEquipment: 'Type of Eqpt',
     issueType: 'Issue Type',
