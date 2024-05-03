@@ -34,7 +34,7 @@ const PieChartOrigin = ({ data }) => {
 
   return (
     <div style={{ height: '300px' }}>
-      <h3 style={{ textAlign: "center" }}>EFC</h3>
+      <h3 style={{ textAlign: "center" }}>OrIGIN</h3>
       <Pie data={chartData} />
     </div>
   );
