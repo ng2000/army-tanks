@@ -103,7 +103,26 @@ export default function DataGrid() {
     <div>
       <div style={{ backgroundColor: "#333", padding: "10px", marginBottom: "20px", display: "flex", justifyContent: "center", alignItems: "center" }}>
         <h1 style={{ color: "#fff", margin: 0 }}>{showSummary ? 'Log Book' : 'Dashboard'} </h1>
-        {!showSummary && <button onClick={() => window.location.href = "/add"} style={{ backgroundColor: "#007bff", color: "#fff", border: "none", borderRadius: "4px", cursor: "pointer", padding: "8px 16px" }}>Add New Tank</button>}
+        {!showSummary && <button
+          onClick={() => window.location.href = "/add"}
+          style={{
+            position: 'absolute',
+            right: '10px',
+            backgroundColor: '#8b5cf6',
+            border: 'none',
+            color: 'white',
+            padding: '10px 10px',
+            textAlign: 'center',
+            textDecoration: 'none',
+            display: 'inline-block',
+            fontSize: '16px',
+            margin: '4px 2px',
+            cursor: 'pointer',
+            borderRadius: '12px'
+          }}
+        >
+          Add New Tank
+        </button>}
       </div>
 
       {showSummary ? (
