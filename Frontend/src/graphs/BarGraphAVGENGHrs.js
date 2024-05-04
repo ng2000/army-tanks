@@ -70,11 +70,11 @@ const BarGraphAVGENGHrs = ({ data }) => {
         datasets: [{
             label: 'OH',
             data: ohList,
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            backgroundColor: '#32c9c9',
         }, {
             label: 'ORG',
             data: orgList,
-            backgroundColor: 'rgba(53, 162, 235, 0.5)',
+            backgroundColor: '#f1af81',
         }],
     };
 

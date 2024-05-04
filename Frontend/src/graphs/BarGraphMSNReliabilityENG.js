@@ -40,11 +40,11 @@ const BarGraphMSNReliabilityENG = ({ data }) => {
         datasets: [{
             label: 'FMC',
             data: outputFMC, // Use the values of AuthTankValues as data
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            backgroundColor: '#f1af81',
         }, {
             label: 'PMC',
             data: outputPMC,
-            backgroundColor: 'rgba(53, 162, 235, 0.5)',
+            backgroundColor: '#32c9c9',
         },
         {
             label: 'NMC',
@@ -52,7 +52,6 @@ const BarGraphMSNReliabilityENG = ({ data }) => {
             backgroundColor: 'rgba(53, 99, 135, 0.5)',
         }],
     };
-
     const options = {
         scales: {
             yAxes: [{
@@ -62,7 +61,7 @@ const BarGraphMSNReliabilityENG = ({ data }) => {
             }],
         },
     };
-    return <div><h3 style={{textAlign: "center"}}>MSN RELIABILITY(ENG)</h3><Bar data={chartData} options={options} /></div>;
+    return <div><h3 style={{textAlign: "center"}}>ENG</h3><Bar data={chartData} options={options} /></div>;
 
 };
 

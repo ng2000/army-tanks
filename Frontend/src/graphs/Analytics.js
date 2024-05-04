@@ -107,7 +107,7 @@ const Analytics = () => {
             </div>
 
             <div className="row">
-                <h2>EQPT Profile</h2>
+                <h2>Eqpt Profile</h2>
 
                 <div className="col-3 graphContainer" style={{ margin: '10px' }}>
                     <BarGraphAuthHeld data={filteredRowData}></BarGraphAuthHeld>
@@ -122,7 +122,7 @@ const Analytics = () => {
                 </div>
             </div>
             <div className="row">
-                <h2>EQPT Availability</h2>
+                <h2>Eqpt Availability</h2>
 
                 <div className="col-4 graphContainer" style={{ margin: '10px' }}>
 
@@ -137,7 +137,7 @@ const Analytics = () => {
                 </div>
             </div>
             <div className="row">
-                <h2>MSN Reliability</h2>
+                <h2>Msn Reliability</h2>
 
                 <div className="col-4 graphContainer" style={{ margin: '10px' }}>
 

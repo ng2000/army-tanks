@@ -30,11 +30,11 @@ const PieChartMSNBRL = ({ data }) => {
 
   // Predefined set of visually appealing colors
   const backgroundColors = [
-    '#FF6384', // Red
-    '#36A2EB', // Blue
-    '#FFCE56', // Yellow
-    '#4BC0C0', // Green
-    '#9966FF', // Purple
+    '#f1af81', // Red
+    '#32c9c9', // Blue
+    '#a2f3a2', // Yellow
+    '#f4dd93', // Green
+    '#ceb9ef', // Purple
   ];
 
   const chartData = {
@@ -62,7 +62,7 @@ const PieChartMSNBRL = ({ data }) => {
     };
     return (
         <div>
-            <h3 style={{ textAlign: "center" }}>MSN RELIABILITY (BRL)</h3>
+            <h3 style={{ textAlign: "center" }}>BRL</h3>
             <div style={{ height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Pie data={chartData} options={options}/>
             </div>

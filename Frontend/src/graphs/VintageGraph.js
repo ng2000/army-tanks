@@ -58,9 +58,9 @@ const VintageGraph = ({ data }) => {
       data: {
         labels: labels,
         datasets: [{
-          label: 'Number of Items',
+          label: 'No of AFVs',
           data: count,
-          backgroundColor: 'rgba(255, 99, 132, 0.5)', // Change color as needed
+          backgroundColor: '#32c9c9', // Change color as needed
         }]
       },
       options: {

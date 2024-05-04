@@ -17,11 +17,10 @@ const PieChartOrigin = ({ data }) => {
 
   // Predefined set of visually appealing colors
   const backgroundColors = [
-    '#FF6384', // Red
-    '#36A2EB', // Blue
-    '#FFCE56', // Yellow
-    '#4BC0C0', // Green
-    '#9966FF', // Purple
+    '#f1af81', // Red
+    '#32c9c9', // Blue
+    '#a2f3a2', // Yellow
+    '#f4dd93', // Green
   ];
 
   const chartData = {
