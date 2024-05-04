@@ -50,7 +50,7 @@ const BarGraphAuthHeld = ({ data }) => {
                     <div className="col-md-6 mb-3" key={type}>
                         <div className="card">
                             <div className="card-body">
-                                <h2 className="card-title mb-4">{`${equipmentDataMap.get(type.toLowerCase()).auth} / ${equipmentDataMap.get(type.toLowerCase()).held}`}</h2>
+                                <h2 className="card-title mb-4">{`${equipmentDataMap.get(type.toLowerCase()).held} / ${equipmentDataMap.get(type.toLowerCase()).auth}`}</h2>
                                 <h4 className="card-subtitle mb-2 text-muted">{type ? type.toUpperCase() : type}</h4>
                             </div>
                         </div>
