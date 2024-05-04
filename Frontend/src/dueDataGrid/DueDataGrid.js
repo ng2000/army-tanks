@@ -208,7 +208,7 @@ export default function DueDataGrid() {
   return (
     <div>
       <div style={{ backgroundColor: "#333", padding: "10px", marginBottom: "20px" }}>
-        <h1 style={{ color: "#fff", textAlign: "center", margin: 0 }}>PREVENTIVE MAINT DETAILS </h1>
+        <h2 style={{ color: "#fff", textAlign: "center", margin: 0 }}>PREVENTIVE MAINT DETAILS </h2>
       </div>
       <div className="center-grid">
         <div className="ag-theme-quartz-dark gridClass center-grid">

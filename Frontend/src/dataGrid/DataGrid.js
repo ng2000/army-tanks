@@ -102,7 +102,7 @@ export default function DataGrid() {
   return (
     <div>
       <div style={{ backgroundColor: "#333", padding: "10px", marginBottom: "20px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-        <h1 style={{ color: "#fff", margin: 0 }}>{showSummary ? 'Log Book' : 'Dashboard'} </h1>
+        <h2 style={{ color: "#fff", margin: 0 }}>{showSummary ? 'Log Book' : 'EQPT DATABASE'} </h2>
         {!showSummary && <button
           onClick={() => window.location.href = "/add"}
           style={{

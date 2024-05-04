@@ -20,9 +20,9 @@ const NavbarComponent = () => {
         <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center">
           <Nav>
             <Nav.Link href="/" className="navbar11_dropdown-toggle">Analytics Dashboard</Nav.Link>
-            <Nav.Link href="/eqptdb" className="navbar11_dropdown-toggle">EQPT Dashboard</Nav.Link>
+            <Nav.Link href="/eqptdb" className="navbar11_dropdown-toggle">EQPT Database</Nav.Link>
             {/* <Nav.Link href="/add" className="navbar11_dropdown-toggle">Add New Tank</Nav.Link> */}
-            <Nav.Link href="/import" className="navbar11_dropdown-toggle">Import</Nav.Link>
+            <Nav.Link href="/import" className="navbar11_dropdown-toggle">Import (Admin Only)</Nav.Link>
             {/* {isLoggedIn ? (
               <Nav.Link href="/download" className="navbar11_dropdown-toggle">Export</Nav.Link>
             ) : (<></>

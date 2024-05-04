@@ -35,8 +35,11 @@ export default function FileUploadImport() {
 
   return (
     <div style={{ minHeight: '475px' }}>
+            <div style={{ backgroundColor: "#333", padding: "10px", marginBottom: "20px" }}>
+        <h2 style={{ color: "#fff", textAlign: "center", margin: 0 }}>Import/Export </h2>
+      </div>
       <div style={{ margin: '20px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px' }}>
-        <h2 style={{ marginBottom: '20px' }}>File Upload</h2>
+        <h2 style={{ marginBottom: '20px' }}>Import File</h2>
         <form onSubmit={handleFormSubmit}>
           <div style={{ marginBottom: '20px' }}>
             <input type="file" onChange={handleFileChange} />
@@ -44,6 +47,10 @@ export default function FileUploadImport() {
           <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#8b5cf6', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Upload</button>
         </form>
         {uploadStatus && <p style={{ marginTop: '20px' }}>{uploadStatus}</p>}
+      </div>
+      <div style={{ margin: '20px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px' }}>
+        <h2 style={{ marginBottom: '20px' }}>Export File</h2>
+        <button onClick={() => window.location.href = "/download"} style={{ padding: '10px 20px', backgroundColor: '#8b5cf6', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Download</button>
       </div>
     </div>
   );
