@@ -44,10 +44,27 @@ const PieChartEFCQTR = ({ data }) => {
     }],
   };
 
+  const options = {
+    elements: {
+      arc: {
+        borderWidth: 0 // Remove border from slices
+      }
+    },
+    plugins: {
+      legend: {
+        display: true,
+        position: 'right'
+      }
+    },
+    layout: {
+    },
+    radius: '100%' // Adjust the radius here
+  };
+
   return (
-    <div style={{ height: '300px' }}>
+    <div>
       <h3 style={{ textAlign: "center" }}>EFC</h3>
-      <Pie data={chartData} />
+      <Pie data={chartData} options={options} />
     </div>
   );
 };

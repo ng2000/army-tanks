@@ -94,7 +94,7 @@ const Analytics = () => {
                         ))}
                 </select>
             </div>
-            <div className="row">
+            <div className="row" style={{justifyContent:"center"}}>
                 <h2>EQPT Profile</h2>
 
                 <div className="col-3 graphContainer" style={{ margin: '10px' }}>
@@ -109,34 +109,34 @@ const Analytics = () => {
 
                 </div>
             </div>
-            <div className="row">
+            <div className="row" style={{justifyContent:"center"}}>
                 <h2>EQPT Avalability</h2>
 
-                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
+                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
 
                     <BarGraphAVGENGHrs data={filteredRowData} />
                 </div>
 
-                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
+                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
                     <PieChartEFCQTR data={filteredRowData}></PieChartEFCQTR>
                 </div>
-                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
+                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
                     <BarGraphMSNReliabilityENG data={filteredRowData}></BarGraphMSNReliabilityENG>
                 </div>
             </div>
-            <div className="row">
+            <div className="row" style={{justifyContent:"center"}}>
                 <h2>MSN Reliability</h2>
 
-                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
+                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
 
                     <BarGraphMSNReliabilityENG data={filteredRowData}></BarGraphMSNReliabilityENG>
                 </div>
 
-                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
+                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
                     <PieChartMSNBRL data={filteredRowData}></PieChartMSNBRL>
 
                 </div>
-                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
+                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
                     <PieChartMSNBRL data={filteredRowData} ></PieChartMSNBRL>
                 </div>
             </div>

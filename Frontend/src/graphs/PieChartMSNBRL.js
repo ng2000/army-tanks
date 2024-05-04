@@ -45,10 +45,27 @@ const PieChartMSNBRL = ({ data }) => {
     }],
   };
 
+  const options = {
+    elements: {
+      arc: {
+        borderWidth: 0 // Remove border from slices
+      }
+    },
+    plugins: {
+      legend: {
+        display: true,
+        position: 'right'
+      }
+    },
+    layout: {
+    },
+    radius: '100%' // Adjust the radius here
+  };
+
   return (
-    <div style={{ height: '300px' }}>
+    <div>
       <h3 style={{ textAlign: "center" }}>MSN RELIABILITY(BRL)</h3>
-      <Pie data={chartData} radius={5} height={5} width={5}/>
+      <Pie data={chartData} options={options}/>
     </div>
   );
 };
