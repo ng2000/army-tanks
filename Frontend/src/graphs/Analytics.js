@@ -64,6 +64,9 @@ const Analytics = () => {
 
     return (
         <div>
+            <div style={{ backgroundColor: "#333", padding: "10px", marginBottom: "20px" }}>
+                <h1 style={{ color: "#fff", textAlign: "center", margin: 0 }}>Analytics Dashboard</h1>
+            </div>
             <div style={{
                 display: 'flex',
                 marginBottom: '10px',
@@ -84,16 +87,6 @@ const Analytics = () => {
                             ))}
                     </select>
                 </div>
-                <div style={{ marginRight: '10px' }}>
-                    <label htmlFor="DIV-select">DIV</label>
-                    <select id="DIV-select" value={selectedDIV || ""} onChange={handleSelectionChangeDIV} style={{ marginLeft: '10px' }}>
-                        <option value="">All</option>
-                        {data &&
-                            Array.from(new Set(data.map(row => row["DIV"]))).map(div => (
-                                <option key={div} value={div}>{div}</option>
-                            ))}
-                    </select>
-                </div>
                 <div>
                     <label htmlFor="BDE-select">BDE</label>
                     <select id="BDE-select" value={selectedBDE || ""} onChange={handleSelectionChangeBDE} style={{ marginLeft: '10px' }}>
@@ -101,6 +94,17 @@ const Analytics = () => {
                         {data &&
                             Array.from(new Set(data.map(row => row["BDE"]))).map(bde => (
                                 <option key={bde} value={bde}>{bde}</option>
+                            ))}
+                    </select>
+                </div>
+                
+                <div style={{ marginRight: '10px' }}>
+                    <label htmlFor="DIV-select">DIV</label>
+                    <select id="DIV-select" value={selectedDIV || ""} onChange={handleSelectionChangeDIV} style={{ marginLeft: '10px' }}>
+                        <option value="">All</option>
+                        {data &&
+                            Array.from(new Set(data.map(row => row["DIV"]))).map(div => (
+                                <option key={div} value={div}>{div}</option>
                             ))}
                     </select>
                 </div>

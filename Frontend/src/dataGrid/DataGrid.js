@@ -92,9 +92,11 @@ export default function DataGrid() {
 
   return (
     <div>
-      <div style={{ backgroundColor: "#333", padding: "10px", marginBottom: "20px" }}>
-        <h1 style={{ color: "#fff", textAlign: "center", margin: 0 }}>EQPT Dashboard</h1>
-      </div>
+<div style={{ backgroundColor: "#333", padding: "10px", marginBottom: "20px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+  <h1 style={{ color: "#fff", margin: 0 }}>EQPT Dashboard</h1>
+  <button onClick={() => window.location.href = "/add"} style={{ backgroundColor: "#007bff", color: "#fff", border: "none", borderRadius: "4px", cursor: "pointer", padding: "8px 16px" }}>Add New Tank</button>
+</div>
+
       {showSummary ? (
         <div>
           <button
