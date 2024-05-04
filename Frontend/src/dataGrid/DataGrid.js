@@ -27,8 +27,6 @@ export default function DataGrid() {
   const [selectedBANo, setSelectedBANo] = useState(null); // State to track selected BA number
   const [showSummary, setShowSummary] = useState(false); // State to track whether to show summary
 
-
-
   const handleClick = useCallback((rowData) => {
     console.log("Row data:", rowData);
     console.log("Row data:", rowData["BA No"]);
@@ -94,40 +92,43 @@ export default function DataGrid() {
 
   return (
     <div>
+      <div style={{ backgroundColor: "#333", padding: "10px", marginBottom: "20px" }}>
+        <h1 style={{ color: "#fff", textAlign: "center", margin: 0 }}>EQPT Dashboard</h1>
+      </div>
       {showSummary ? (
         <div>
-<button
-  onClick={() => setShowSummary(false)}
-  style={{
-    backgroundColor: "rgb(139 92 246)", // Red background color
-    color: "white", // White text color
-    border: "none", // No border
-    borderRadius: "4px", // Rounded corners
-    cursor: "pointer", // Pointer cursor on hover
-    fontSize: "14px", // Font size
-    fontWeight: "bold", // Bold font weight
-    marginRight: "10px", // Add some margin to the right
-    marginTop: "10px", // Add some margin to the right
-    marginLeft: "10px", // Add some margin to the right
-  }}
->
-  Back to Grid
-</button>          <TankSummary baNo={selectedBANo} />
+          <button
+            onClick={() => setShowSummary(false)}
+            style={{
+              backgroundColor: "rgb(139 92 246)", // Red background color
+              color: "white", // White text color
+              border: "none", // No border
+              borderRadius: "4px", // Rounded corners
+              cursor: "pointer", // Pointer cursor on hover
+              fontSize: "14px", // Font size
+              fontWeight: "bold", // Bold font weight
+              marginRight: "10px", // Add some margin to the right
+              marginTop: "10px", // Add some margin to the right
+              marginLeft: "10px", // Add some margin to the right
+            }}
+          >
+            Back to Grid
+          </button>          <TankSummary baNo={selectedBANo} />
         </div>
       ) : (
         <div className="center-grid">
 
-        <div className="ag-theme-quartz-dark gridClass center-grid">
-          <AgGridReact
-            rowData={rowData}
-            columnDefs={columnDefs}
-            defaultColDef={defaultColDef}
-            frameworkComponents={{ ButtonRenderer }}
-            className="gridClass"
-            pagination={true}
-            onGridReady={onGridReady}
-          />
-        </div>
+          <div className="ag-theme-quartz-dark gridClass center-grid">
+            <AgGridReact
+              rowData={rowData}
+              columnDefs={columnDefs}
+              defaultColDef={defaultColDef}
+              frameworkComponents={{ ButtonRenderer }}
+              className="gridClass"
+              pagination={true}
+              onGridReady={onGridReady}
+            />
+          </div>
         </div>
       )}
     </div>

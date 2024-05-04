@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import NavbarComponent from "./navbar/Navbar";
-import Banner from './dataGrid/DataGrid';
+import DataGrid from './dataGrid/DataGrid';
 import ApplyForAccess from "./addTank/AddTank";
 import FileUploadImport from "./fileUploadImport/FileUploadImport";
 import Footer from "./footer/Footer"
@@ -26,8 +26,8 @@ function App() {
     <div className="App">
       {!isLoginPage && <NavbarComponent />}
       <Routes>
-        <Route path="/" element={<ProtectedRoute element={<Banner />} />} />
-        <Route path="/analytics" element={<ProtectedRoute element={<Analytics />} />} />
+        <Route path="/" element={<ProtectedRoute element={<Analytics />} />} />
+        <Route path="/eqptdb" element={<ProtectedRoute element={<DataGrid />} />} />
         <Route path="/import" element={<ProtectedRoute element={<FileUploadImport />} />} />
         <Route path="/add" element={<ProtectedRoute element={<ApplyForAccess />} />} />
         <Route path="/search" element={<ProtectedRoute element={<DueDataGrid />} />} />

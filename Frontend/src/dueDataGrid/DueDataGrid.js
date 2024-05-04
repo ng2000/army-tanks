@@ -207,6 +207,9 @@ export default function DueDataGrid() {
 
   return (
     <div className="center-grid">
+            <div style={{ backgroundColor: "#333", padding: "10px", marginBottom: "20px" }}>
+        <h1 style={{ color: "#fff", textAlign: "center", margin: 0 }}>Search</h1>
+      </div>
       <div className="ag-theme-quartz-dark gridClass center-grid">
         <AgGridReact
           rowData={rowData}

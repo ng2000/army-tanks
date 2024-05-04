@@ -19,14 +19,14 @@ const NavbarComponent = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center">
           <Nav>
-            <Nav.Link href="/" className="navbar11_dropdown-toggle">Home</Nav.Link>
+            <Nav.Link href="/" className="navbar11_dropdown-toggle">Analytics Dashboard</Nav.Link>
+            <Nav.Link href="/eqptdb" className="navbar11_dropdown-toggle">EQPT Dashboard</Nav.Link>
             <Nav.Link href="/add" className="navbar11_dropdown-toggle">Add New Tank</Nav.Link>
             <Nav.Link href="/import" className="navbar11_dropdown-toggle">Import</Nav.Link>
             {isLoggedIn ? (
               <Nav.Link href="/download" className="navbar11_dropdown-toggle">Export</Nav.Link>
             ) : (<></>
             )}
-            <Nav.Link href="/analytics" className="navbar11_dropdown-toggle">Analytics</Nav.Link>
             <Nav.Link href="/search" className="navbar11_dropdown-toggle">Search</Nav.Link>
           </Nav>
         </Navbar.Collapse>
