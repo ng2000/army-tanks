@@ -48,7 +48,7 @@ const PieChartMSNBRL = ({ data }) => {
   return (
     <div style={{ height: '300px' }}>
       <h3 style={{ textAlign: "center" }}>MSN RELIABILITY(BRL)</h3>
-      <Pie data={chartData} />
+      <Pie data={chartData} radius={30}/>
     </div>
   );
 };
