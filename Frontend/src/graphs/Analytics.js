@@ -107,7 +107,7 @@ const Analytics = () => {
                     <select id="DIV-select" value={selectedDIV || ""} onChange={handleSelectionChangeDIV} style={{ marginLeft: '10px' }}>
                         <option value="">All</option>
                         {data &&
-                            Array.from(new Set(data.map(row => row["DIV"]))).map(div => (
+                            Array.from(new Set(data.map(row => row["DIV/(I) BDE"]))).map(div => (
                                 <option key={div} value={div}>{div}</option>
                             ))}
                     </select>

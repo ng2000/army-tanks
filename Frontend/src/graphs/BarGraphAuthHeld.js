@@ -17,16 +17,23 @@ const BarGraphAuthHeld = ({ data }) => {
         // Add more initial values as needed
     };
 
-    // Iterate through each equipment type
+    const equipmentDataMap = new Map();
+
     equipmentTypes.forEach(type => {
         // Filter the data for the current equipment type
         const filteredData = data.filter(item => item["Type of Eqpt"].trim() === type);
-        console.log(AuthTankValues)
-        console.log(AuthTankValues[type])
-        console.log(type)
-        outputHeld.push(filteredData.length);
-        outputAuth.push(AuthTankValues[type] != undefined ? AuthTankValues[type] : filteredData.length);
+
+        // Determine auth and held values
+        const authValue = AuthTankValues[type] !== undefined ? AuthTankValues[type] : filteredData.length;
+        const heldValue = filteredData.length;
+
+        // Save auth and held values to the map
+        equipmentDataMap.set(type.toLowerCase(), { auth: authValue, held: heldValue });
     });
+
+    // Now you have a map containing the desired data
+    console.log(equipmentDataMap);
+
 
     const chartData = {
         labels: equipmentTypes, // Use the keys of AuthTankValues as labels
@@ -50,7 +57,63 @@ const BarGraphAuthHeld = ({ data }) => {
             }],
         },
     };
-    return <div><h3 style={{textAlign: "center"}}>AUTH/HELD</h3><Bar data={chartData} options={options} /></div>;
+    return <div><h3 style={{ textAlign: "center" }}>AUTH/HELD</h3>
+        <div className='row'>
+            <div className='col-6'>
+                <h1>
+                    {equipmentDataMap.get('TK t-90'.toLowerCase()) ? equipmentDataMap.get('TK t-90'.toLowerCase()).auth : 0}
+                    /
+                    {equipmentDataMap.get('TK t-90'.toLowerCase()) ? equipmentDataMap.get('TK t-90'.toLowerCase()).held : 0}
+
+                    <br />
+                </h1>
+                <h3>
+                    TK T-90
+
+                </h3>
+            </div>
+            <div className='col-6'>
+                <h1>
+                    {equipmentDataMap.get('TK T-72'.toLowerCase()) ? equipmentDataMap.get('TK t-72'.toLowerCase()).auth : 0}
+                    /
+                    {equipmentDataMap.get('TK T-72'.toLowerCase()) ? equipmentDataMap.get('TK t-72'.toLowerCase()).held : 0}
+
+                    <br />
+                </h1>
+                <h3>
+                    TK T-72
+
+                </h3>
+            </div>
+        </div>
+        <div className='row'>
+            <div className='col-6'>
+                <h1>
+                    {equipmentDataMap.get('MBT ARJUN'.toLowerCase()) ? equipmentDataMap.get('MBT ARJUN'.toLowerCase()).auth : 0}
+                    /
+                    {equipmentDataMap.get('MBT ARJUN'.toLowerCase()) ? equipmentDataMap.get('MBT ARJUN'.toLowerCase()).held : 0}
+
+                    <br />
+                </h1>
+                <h3>
+                    MBT ARJUN
+
+                </h3>
+            </div>
+            <div className='col-6'>
+                <h1>
+                    {equipmentDataMap.get('ICV BMP II'.toLowerCase()) ? equipmentDataMap.get('ICV BMP II'.toLowerCase()).auth : 0}
+                    /
+                    {equipmentDataMap.get('ICV BMP II'.toLowerCase()) ? equipmentDataMap.get('ICV BMP II'.toLowerCase()).held : 0}
+
+                    <br />
+                </h1>
+                <h3>
+                    ICV BMP II
+
+                </h3>
+            </div>
+        </div></div>;
 
 };
 
