@@ -87,7 +87,7 @@ const Analytics = () => {
                             ))}
                     </select>
                 </div>
-                <div>
+                <div style={{ marginRight: '10px' }}>
                     <label htmlFor="BDE-select">BDE</label>
                     <select id="BDE-select" value={selectedBDE || ""} onChange={handleSelectionChangeBDE} style={{ marginLeft: '10px' }}>
                         <option value="">All</option>
@@ -98,7 +98,7 @@ const Analytics = () => {
                     </select>
                 </div>
                 
-                <div style={{ marginRight: '10px' }}>
+                <div >
                     <label htmlFor="DIV-select">DIV</label>
                     <select id="DIV-select" value={selectedDIV || ""} onChange={handleSelectionChangeDIV} style={{ marginLeft: '10px' }}>
                         <option value="">All</option>

@@ -18,15 +18,15 @@ const VintageGraph = ({ data }) => {
     data.forEach(item => {
       const firstTwoDigits = parseInt(item["BA No"].trim().substring(0, 2));
       const decade = firstTwoDigits;
-      console.log("decade ",decade)
+      console.log("decade ", decade)
       intervalCounts[decade] = (intervalCounts[decade] || 0) + 1;
     });
     console.log("intervalCounts ", intervalCounts);
     // Prepare data for chart.js
     const labels = [];
-    const counts = [0,0,0,0,0,0];
-    for (let i = 80; i <= 130; i += 10) {
-      const label = `${i % 100}-${(i + 10) % 100}`;
+    const counts = [0, 0, 0, 0, 0, 0];
+    for (let i = 1980; i < 2020; i += 10) {
+      const label = `${i}-${(i + 10)}`;
       labels.push(label);
     }
 
@@ -40,10 +40,8 @@ const VintageGraph = ({ data }) => {
         count[1] += value; // Increment count for the 90-00 interval
       } else if (parsedKey >= 0 && parsedKey < 10) {
         count[2] += value; // Increment count for the 00-10 interval
-      } else if (parsedKey >= 10 && parsedKey < 20) {
+      } else if (parsedKey >= 10 && parsedKey <= 20) {
         count[3] += value; // Increment count for the 10-20 interval
-      } else if (parsedKey >= 20 && parsedKey < 30) {
-        count[4] += value; // Increment count for the 20-30 interval
       }
 
       console.log(`Key: ${parsedKey}, Value: ${value}`);
@@ -66,7 +64,8 @@ const VintageGraph = ({ data }) => {
       options: {
         scales: {
           y: {
-            beginAtZero: true
+            beginAtZero: false,
+            min: 1 // Set minimum value to 1
           }
         }
       }
@@ -79,7 +78,7 @@ const VintageGraph = ({ data }) => {
     };
   }, [data]);
 
-  return <div><h3 style={{textAlign: "center"}}>VINTAGE</h3><canvas ref={canvasRef} /></div>;
+  return <div><h3 style={{ textAlign: "center" }}>VINTAGE</h3><canvas ref={canvasRef} /></div>;
 
 };
 
