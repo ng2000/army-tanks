@@ -36,11 +36,13 @@ export default function DataGrid() {
   }, []);
 
   const [columnDefs, setColumnDefs] = useState([
-    { field: "SNO", minWidth: 170 },
-    { field: "Unit" },
-    { field: "Type of Eqpt" },
-    { field: "Issue Type" },
-    { field: "BA No" },
+    { field: "BA No", headerName: "BA No" },
+    { field: "Unit", headerName: "UNIT" },
+    { field: "BDE", headerName:"BDE" },
+    { field: "DIV/(I) BDE", headerName:"DIV/(I) BDE" },
+    { field: "CORPS", headerName:"CORPS" },
+    { field: "Issue Type", headerName:"ORIGIN" },
+    { field: "SER/R2/EOA/VOR", headerName:"EQPT STATUS" },
     {
       field: "actions",
       headerName: "Summary",
@@ -64,14 +66,21 @@ export default function DataGrid() {
         .then((resp) => resp.json())
         .then((data) => {
           // Filter rows to keep only unique BA No
-          const uniqueBANoSet = new Set();
-          const filteredData = data.filter((row) => {
-            const isUnique = !uniqueBANoSet.has(row["BA No"]);
-            if (isUnique) {
-              uniqueBANoSet.add(row["BA No"]);
+
+          const uniqueBANoMap = new Map();
+
+          const filteredData = data.reduce((acc, row) => {
+            // Check if the BA No is already in the map
+            if (uniqueBANoMap.has(row["BA No"])) {
+              // If it exists, update the value with the latest record
+              uniqueBANoMap.set(row["BA No"], row);
+            } else {
+              // If it doesn't exist, add it to the map
+              uniqueBANoMap.set(row["BA No"], row);
             }
-            return isUnique;
-          });
+            // Return the accumulated values
+            return Array.from(uniqueBANoMap.values());
+          }, []);
 
           setRowData(filteredData);
 
