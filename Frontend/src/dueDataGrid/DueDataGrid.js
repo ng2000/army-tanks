@@ -40,7 +40,7 @@ export default function DueDataGrid() {
       },
     },
     {
-      field: "MR-I Due Dt",
+      field: "MR Due Dt",
       filter: "agDateColumnFilter",
       filterParams: {
         filterOptions: [
@@ -55,7 +55,7 @@ export default function DueDataGrid() {
       },
     },
     {
-      field: "OH-I Due Dt",
+      field: "OH Due Dt",
       filter: "agDateColumnFilter",
       filterParams: {
         filterOptions: [
@@ -70,35 +70,6 @@ export default function DueDataGrid() {
       },
     },
     {
-      field: "MR II Duee",
-      filter: "agDateColumnFilter",
-      filterParams: {
-        filterOptions: [
-          "equals",
-          "notEqual",
-          "lessThan",
-          "lessThanOrEqual",
-          "greaterThan",
-          "greaterThanOrEqual",
-          "inRange",
-        ],
-      },
-    },
-    {
-      field: "OH II Due",
-      filter: "agDateColumnFilter",
-      filterParams: {
-        filterOptions: [
-          "equals",
-          "notEqual",
-          "lessThan",
-          "lessThanOrEqual",
-          "greaterThan",
-          "greaterThanOrEqual",
-          "inRange",
-        ],
-      },
-    }, {
       field: "N2 Purging Due Date",
       filter: "agDateColumnFilter",
       filterParams: {
@@ -152,10 +123,8 @@ export default function DueDataGrid() {
             // Assuming "TM I Due" is a date string in the format "dd-mm-yyyy"
             "TM I Due": parseDateString(row["TM I Due"]),
             "TM II Due": parseDateString(row["TM II Due"]),
-            "MR-I Due Dt": parseDateString(row["MR-I Due Dt"]),
-            "OH-I Due Dt": parseDateString(row["OH-I Due Dt"]),
-            "MR II Due": parseDateString(row["MR II Due"]),
-            "OH II Due": parseDateString(row["OH II Due"]),
+            "MR Due Dt": parseDateString(row["MR Due Dt"]),
+            "OH Due Dt": parseDateString(row["OH Due Dt"]),
             "N2 Purging Due Date": parseDateString(row["N2 Purging Due Date"]),
             // Include similar parsing for other date fields
           }));
