@@ -7,7 +7,7 @@ import PieChartEFCQTR from "./PieChartEFCQTR";
 import BarGraphMSNReliabilityENG from "./BarGraphMSNReliabilityENG";
 import PieChartMSNBRL from "./PieChartMSNBRL";
 import PieChartOrigin from "./PieChartOrigin";
-import './Analytics.css';
+import './Analytics.css'
 
 const Analytics = () => {
     const [data, setData] = useState([]);
@@ -63,28 +63,30 @@ const Analytics = () => {
     }
 
     return (
-        <div className="analytics-container">
-            <div className="filters">
+        <div>
+            <div style={{ marginBottom: '10px' }}>
                 <label htmlFor="Unit-select">Unit</label>
-                <select id="Unit-select" value={selectedUnit || ""} onChange={handleSelectionChangeUnit}>
+                <select id="Unit-select" value={selectedUnit || ""} onChange={handleSelectionChangeUnit} style={{ marginLeft: '10px' }}>
                     <option value="">All</option>
                     {data &&
                         Array.from(new Set(data.map(row => row["Unit"]))).map(unit => (
                             <option key={unit} value={unit}>{unit}</option>
                         ))}
                 </select>
-
+            </div>
+            <div style={{ marginBottom: '10px' }}>
                 <label htmlFor="DIV-select">DIV</label>
-                <select id="DIV-select" value={selectedDIV || ""} onChange={handleSelectionChangeDIV}>
+                <select id="DIV-select" value={selectedDIV || ""} onChange={handleSelectionChangeDIV} style={{ marginLeft: '10px' }}>
                     <option value="">All</option>
                     {data &&
                         Array.from(new Set(data.map(row => row["DIV"]))).map(div => (
                             <option key={div} value={div}>{div}</option>
                         ))}
                 </select>
-
+            </div>
+            <div style={{ marginBottom: '10px' }}>
                 <label htmlFor="BDE-select">BDE</label>
-                <select id="BDE-select" value={selectedBDE || ""} onChange={handleSelectionChangeBDE}>
+                <select id="BDE-select" value={selectedBDE || ""} onChange={handleSelectionChangeBDE} style={{ marginLeft: '10px' }}>
                     <option value="">All</option>
                     {data &&
                         Array.from(new Set(data.map(row => row["BDE"]))).map(bde => (
@@ -92,45 +94,54 @@ const Analytics = () => {
                         ))}
                 </select>
             </div>
+            <div className="row">
+                <h2>EQPT Profile</h2>
 
-            <h2>EQPT Profile</h2>
-            <div className="graphs">
-                <div className="graph">
-                    <BarGraphAuthHeld data={filteredRowData} />
+                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
+                    <BarGraphAuthHeld data={filteredRowData}></BarGraphAuthHeld>
                 </div>
-                <div className="graph">
-                    <PieChartOrigin data={filteredRowData} />
+
+                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
+                    <PieChartOrigin data={filteredRowData}></PieChartOrigin>
                 </div>
-                <div className="graph">
+                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
                     <VintageGraph data={filteredRowData} />
+
                 </div>
             </div>
+            <div className="row">
+                <h2>EQPT Avalability</h2>
 
-            <div className="graphs">
-                <h2>EQPT Availability</h2>
-                <div className="graph">
+                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
+
                     <BarGraphAVGENGHrs data={filteredRowData} />
                 </div>
-                <div className="graph">
-                    <PieChartEFCQTR data={filteredRowData} />
+
+                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
+                    <PieChartEFCQTR data={filteredRowData}></PieChartEFCQTR>
                 </div>
-                <div className="graph">
-                    <BarGraphMSNReliabilityENG data={filteredRowData} />
+                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
+                    <BarGraphMSNReliabilityENG data={filteredRowData}></BarGraphMSNReliabilityENG>
+                </div>
+            </div>
+            <div className="row">
+                <h2>MSN Reliability</h2>
+
+                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
+
+                    <BarGraphMSNReliabilityENG data={filteredRowData}></BarGraphMSNReliabilityENG>
+                </div>
+
+                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
+                    <PieChartMSNBRL data={filteredRowData}></PieChartMSNBRL>
+
+                </div>
+                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
+                    <PieChartMSNBRL data={filteredRowData} ></PieChartMSNBRL>
                 </div>
             </div>
 
-            <div className="graphs">
-                <h2>MSN Reliability</h2>
-                <div className="graph">
-                    <BarGraphMSNReliabilityENG data={filteredRowData} />
-                </div>
-                <div className="graph">
-                    <PieChartMSNBRL data={filteredRowData} />
-                </div>
-                <div className="graph">
-                    <PieChartMSNBRL data={filteredRowData} />
-                </div>
-            </div>
+
         </div>
     );
 };

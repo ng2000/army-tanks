@@ -46,14 +46,15 @@ const PieChartOrigin = ({ data }) => {
     },
     layout: {
     },
-    radius: '100%' // Adjust the radius here
+    radius: '80%' // Adjust the radius here
   };
-
   return (
-    <div>
-      <h3 style={{ textAlign: "center" }}>ORIGIN</h3>
-      <Pie data={chartData} options={options}/>
-    </div>
+      <div>
+        <h3 style={{ textAlign: "center" }}>ORIGIN</h3>
+        <div style={{ height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Pie data={chartData} options={options}/>
+        </div>
+      </div>
   );
 };
 
