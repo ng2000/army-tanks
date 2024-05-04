@@ -94,56 +94,54 @@ const Analytics = () => {
                         ))}
                 </select>
             </div>
-            <div className="row" style={{justifyContent:"center"}}>
+            <div className="row" style={{ justifyContent: "space-between", marginBottom: '20px' }}>
                 <h2>EQPT Profile</h2>
 
-                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
+                <div className="col-3 graphContainer" >
                     <BarGraphAuthHeld data={filteredRowData}></BarGraphAuthHeld>
                 </div>
 
-                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
+                <div className="col-3 graphContainer" >
                     <PieChartOrigin data={filteredRowData}></PieChartOrigin>
                 </div>
-                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
+                <div className="col-3 graphContainer" >
                     <VintageGraph data={filteredRowData} />
 
                 </div>
             </div>
-            <div className="row" style={{justifyContent:"center"}}>
+            <div className="row" style={{ justifyContent: "space-between", marginBottom: '20px' }}>
                 <h2>EQPT Avalability</h2>
 
-                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
+                <div className="col-3 graphContainer" >
 
                     <BarGraphAVGENGHrs data={filteredRowData} />
                 </div>
 
-                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
+                <div className="col-3 graphContainer" >
                     <PieChartEFCQTR data={filteredRowData}></PieChartEFCQTR>
                 </div>
-                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
+                <div className="col-3 graphContainer" >
                     <BarGraphMSNReliabilityENG data={filteredRowData}></BarGraphMSNReliabilityENG>
                 </div>
             </div>
-            <div className="row" style={{justifyContent:"center"}}>
+            <div className="row" style={{ justifyContent: "space-between", marginBottom: '20px' }}>
                 <h2>MSN Reliability</h2>
 
-                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
+                <div className="col-3 graphContainer" >
 
                     <BarGraphMSNReliabilityENG data={filteredRowData}></BarGraphMSNReliabilityENG>
                 </div>
 
-                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
+                <div className="col-3 graphContainer" >
                     <PieChartMSNBRL data={filteredRowData}></PieChartMSNBRL>
 
                 </div>
-                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
+                <div className="col-3 graphContainer" >
                     <PieChartMSNBRL data={filteredRowData} ></PieChartMSNBRL>
                 </div>
             </div>
-
-
         </div>
     );
 };
 
-export default Analytics;
+export default Analytics
