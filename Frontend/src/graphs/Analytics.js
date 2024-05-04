@@ -64,9 +64,9 @@ const Analytics = () => {
 
     return (
         <div>
-            <div>
+            <div style={{ marginBottom: '10px' }}>
                 <label htmlFor="Unit-select">Unit</label>
-                <select id="Unit-select" value={selectedUnit || ""} onChange={handleSelectionChangeUnit}>
+                <select id="Unit-select" value={selectedUnit || ""} onChange={handleSelectionChangeUnit} style={{ marginLeft: '10px' }}>
                     <option value="">All</option>
                     {data &&
                         Array.from(new Set(data.map(row => row["Unit"]))).map(unit => (
@@ -74,9 +74,9 @@ const Analytics = () => {
                         ))}
                 </select>
             </div>
-            <div>
+            <div style={{ marginBottom: '10px' }}>
                 <label htmlFor="DIV-select">DIV</label>
-                <select id="DIV-select" value={selectedDIV || ""} onChange={handleSelectionChangeDIV}>
+                <select id="DIV-select" value={selectedDIV || ""} onChange={handleSelectionChangeDIV} style={{ marginLeft: '10px' }}>
                     <option value="">All</option>
                     {data &&
                         Array.from(new Set(data.map(row => row["DIV"]))).map(div => (
@@ -84,9 +84,9 @@ const Analytics = () => {
                         ))}
                 </select>
             </div>
-            <div>
+            <div style={{ marginBottom: '10px' }}>
                 <label htmlFor="BDE-select">BDE</label>
-                <select id="BDE-select" value={selectedBDE || ""} onChange={handleSelectionChangeBDE}>
+                <select id="BDE-select" value={selectedBDE || ""} onChange={handleSelectionChangeBDE} style={{ marginLeft: '10px' }}>
                     <option value="">All</option>
                     {data &&
                         Array.from(new Set(data.map(row => row["BDE"]))).map(bde => (
@@ -97,14 +97,14 @@ const Analytics = () => {
             <div className="row">
                 <h2>EQPT Profile</h2>
 
-                <div className="col-3 graphContainer">
+                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
                     <BarGraphAuthHeld data={filteredRowData}></BarGraphAuthHeld>
                 </div>
 
-                <div className="col-3 graphContainer">
+                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
                     <PieChartOrigin data={filteredRowData}></PieChartOrigin>
                 </div>
-                <div className="col-3 graphContainer">
+                <div className="col-3 graphContainer" style={{ margin: '10px' }}>
                     <VintageGraph data={filteredRowData} />
 
                 </div>
@@ -112,31 +112,31 @@ const Analytics = () => {
             <div className="row">
                 <h2>EQPT Avalability</h2>
 
-                <div className="col-4 graphContainer">
+                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
 
                     <BarGraphAVGENGHrs data={filteredRowData} />
                 </div>
 
-                <div className="col-4 graphContainer">
+                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
                     <PieChartEFCQTR data={filteredRowData}></PieChartEFCQTR>
                 </div>
-                <div className="col-4 graphContainer">
+                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
                     <BarGraphMSNReliabilityENG data={filteredRowData}></BarGraphMSNReliabilityENG>
                 </div>
             </div>
             <div className="row">
                 <h2>MSN Reliability</h2>
 
-                <div className="col-4 graphContainer">
+                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
 
                     <BarGraphMSNReliabilityENG data={filteredRowData}></BarGraphMSNReliabilityENG>
                 </div>
 
-                <div className="col-4 graphContainer">
+                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
                     <PieChartMSNBRL data={filteredRowData}></PieChartMSNBRL>
 
                 </div>
-                <div className="col-4 graphContainer">
+                <div className="col-4 graphContainer" style={{ margin: '10px' }}>
                     <PieChartMSNBRL data={filteredRowData} ></PieChartMSNBRL>
                 </div>
             </div>
