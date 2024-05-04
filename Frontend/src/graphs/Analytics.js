@@ -64,36 +64,48 @@ const Analytics = () => {
 
     return (
         <div>
-            <div style={{ marginBottom: '10px' }}>
-                <label htmlFor="Unit-select">Unit</label>
-                <select id="Unit-select" value={selectedUnit || ""} onChange={handleSelectionChangeUnit} style={{ marginLeft: '10px' }}>
-                    <option value="">All</option>
-                    {data &&
-                        Array.from(new Set(data.map(row => row["Unit"]))).map(unit => (
-                            <option key={unit} value={unit}>{unit}</option>
-                        ))}
-                </select>
+            <div style={{
+                display: 'flex',
+                marginBottom: '10px',
+                background: '#e9e5f0',
+                width: '369px',
+                margin: '17px 0px 20px 17px',
+                padding: '10px',
+                border: '1px solid #b78ffd',
+                borderRadius: '6px'
+            }}>
+                <div style={{ marginRight: '10px' }}>
+                    <label htmlFor="Unit-select">Unit</label>
+                    <select id="Unit-select" value={selectedUnit || ""} onChange={handleSelectionChangeUnit} style={{ marginLeft: '10px' }}>
+                        <option value="">All</option>
+                        {data &&
+                            Array.from(new Set(data.map(row => row["Unit"]))).map(unit => (
+                                <option key={unit} value={unit}>{unit}</option>
+                            ))}
+                    </select>
+                </div>
+                <div style={{ marginRight: '10px' }}>
+                    <label htmlFor="DIV-select">DIV</label>
+                    <select id="DIV-select" value={selectedDIV || ""} onChange={handleSelectionChangeDIV} style={{ marginLeft: '10px' }}>
+                        <option value="">All</option>
+                        {data &&
+                            Array.from(new Set(data.map(row => row["DIV"]))).map(div => (
+                                <option key={div} value={div}>{div}</option>
+                            ))}
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="BDE-select">BDE</label>
+                    <select id="BDE-select" value={selectedBDE || ""} onChange={handleSelectionChangeBDE} style={{ marginLeft: '10px' }}>
+                        <option value="">All</option>
+                        {data &&
+                            Array.from(new Set(data.map(row => row["BDE"]))).map(bde => (
+                                <option key={bde} value={bde}>{bde}</option>
+                            ))}
+                    </select>
+                </div>
             </div>
-            <div style={{ marginBottom: '10px' }}>
-                <label htmlFor="DIV-select">DIV</label>
-                <select id="DIV-select" value={selectedDIV || ""} onChange={handleSelectionChangeDIV} style={{ marginLeft: '10px' }}>
-                    <option value="">All</option>
-                    {data &&
-                        Array.from(new Set(data.map(row => row["DIV"]))).map(div => (
-                            <option key={div} value={div}>{div}</option>
-                        ))}
-                </select>
-            </div>
-            <div style={{ marginBottom: '10px' }}>
-                <label htmlFor="BDE-select">BDE</label>
-                <select id="BDE-select" value={selectedBDE || ""} onChange={handleSelectionChangeBDE} style={{ marginLeft: '10px' }}>
-                    <option value="">All</option>
-                    {data &&
-                        Array.from(new Set(data.map(row => row["BDE"]))).map(bde => (
-                            <option key={bde} value={bde}>{bde}</option>
-                        ))}
-                </select>
-            </div>
+
             <div className="row">
                 <h2>EQPT Profile</h2>
 
