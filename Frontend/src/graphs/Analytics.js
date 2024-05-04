@@ -122,7 +122,7 @@ const Analytics = () => {
                 </div>
             </div>
             <div className="row">
-                <h2>EQPT Avalability</h2>
+                <h2>EQPT Availability</h2>
 
                 <div className="col-4 graphContainer" style={{ margin: '10px' }}>
 

@@ -62,7 +62,7 @@ const PieChartMSNBRL = ({ data }) => {
     };
     return (
         <div>
-            <h3 style={{ textAlign: "center" }}>MSN Reliability (BRL)</h3>
+            <h3 style={{ textAlign: "center" }}>MSN RELIABILITY (BRL)</h3>
             <div style={{ height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Pie data={chartData} options={options}/>
             </div>
