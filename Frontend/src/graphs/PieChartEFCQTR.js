@@ -26,6 +26,11 @@ const PieChartEFCQTR = ({ data }) => {
 
   const labels = typeCounts.map(item => item.type);
   const counts = typeCounts.map(item => item.count);
+    // Step 1: Calculate the sum of all counts
+    const totalCount = counts.reduce((sum, count) => sum + count, 0);
+
+    // Step 2: Calculate the percentage of each item
+    const percentages = counts.map(count => (count / totalCount) * 100);
 
   // Predefined set of visually appealing colors
   const backgroundColors = [
@@ -39,7 +44,7 @@ const PieChartEFCQTR = ({ data }) => {
   const chartData = {
     labels: labels,
     datasets: [{
-      data: counts,
+      data: percentages,
       backgroundColor: backgroundColors,
     }],
   };
