@@ -3,3 +3,25 @@
  border-radius: 25px;
  border: 1px solid grey;
 }
+.analytics-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+
+.graphs {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.graph {
+    margin: 10px;
+    justify-content: center;
+    background: rgb(224, 224, 224);
+    border-radius: 25px;
+    border: 1px solid grey;
+}

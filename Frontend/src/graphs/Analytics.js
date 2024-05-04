@@ -7,7 +7,7 @@ import PieChartEFCQTR from "./PieChartEFCQTR";
 import BarGraphMSNReliabilityENG from "./BarGraphMSNReliabilityENG";
 import PieChartMSNBRL from "./PieChartMSNBRL";
 import PieChartOrigin from "./PieChartOrigin";
-import './Analytics.css'
+import './Analytics.css';
 
 const Analytics = () => {
     const [data, setData] = useState([]);
@@ -63,30 +63,28 @@ const Analytics = () => {
     }
 
     return (
-        <div>
-            <div style={{ marginBottom: '10px' }}>
+        <div className="analytics-container">
+            <div className="filters">
                 <label htmlFor="Unit-select">Unit</label>
-                <select id="Unit-select" value={selectedUnit || ""} onChange={handleSelectionChangeUnit} style={{ marginLeft: '10px' }}>
+                <select id="Unit-select" value={selectedUnit || ""} onChange={handleSelectionChangeUnit}>
                     <option value="">All</option>
                     {data &&
                         Array.from(new Set(data.map(row => row["Unit"]))).map(unit => (
                             <option key={unit} value={unit}>{unit}</option>
                         ))}
                 </select>
-            </div>
-            <div style={{ marginBottom: '10px' }}>
+
                 <label htmlFor="DIV-select">DIV</label>
-                <select id="DIV-select" value={selectedDIV || ""} onChange={handleSelectionChangeDIV} style={{ marginLeft: '10px' }}>
+                <select id="DIV-select" value={selectedDIV || ""} onChange={handleSelectionChangeDIV}>
                     <option value="">All</option>
                     {data &&
                         Array.from(new Set(data.map(row => row["DIV"]))).map(div => (
                             <option key={div} value={div}>{div}</option>
                         ))}
                 </select>
-            </div>
-            <div style={{ marginBottom: '10px' }}>
+
                 <label htmlFor="BDE-select">BDE</label>
-                <select id="BDE-select" value={selectedBDE || ""} onChange={handleSelectionChangeBDE} style={{ marginLeft: '10px' }}>
+                <select id="BDE-select" value={selectedBDE || ""} onChange={handleSelectionChangeBDE}>
                     <option value="">All</option>
                     {data &&
                         Array.from(new Set(data.map(row => row["BDE"]))).map(bde => (
@@ -94,54 +92,47 @@ const Analytics = () => {
                         ))}
                 </select>
             </div>
-            <div className="row" style={{ justifyContent: "space-between", marginBottom: '20px' }}>
-                <h2>EQPT Profile</h2>
 
-                <div className="col-3 graphContainer" >
-                    <BarGraphAuthHeld data={filteredRowData}></BarGraphAuthHeld>
+            <h2>EQPT Profile</h2>
+            <div className="graphs">
+                <div className="graph">
+                    <BarGraphAuthHeld data={filteredRowData} />
                 </div>
-
-                <div className="col-3 graphContainer" >
-                    <PieChartOrigin data={filteredRowData}></PieChartOrigin>
+                <div className="graph">
+                    <PieChartOrigin data={filteredRowData} />
                 </div>
-                <div className="col-3 graphContainer" >
+                <div className="graph">
                     <VintageGraph data={filteredRowData} />
-
                 </div>
             </div>
-            <div className="row" style={{ justifyContent: "space-between", marginBottom: '20px' }}>
-                <h2>EQPT Avalability</h2>
 
-                <div className="col-3 graphContainer" >
-
+            <div className="graphs">
+                <h2>EQPT Availability</h2>
+                <div className="graph">
                     <BarGraphAVGENGHrs data={filteredRowData} />
                 </div>
-
-                <div className="col-3 graphContainer" >
-                    <PieChartEFCQTR data={filteredRowData}></PieChartEFCQTR>
+                <div className="graph">
+                    <PieChartEFCQTR data={filteredRowData} />
                 </div>
-                <div className="col-3 graphContainer" >
-                    <BarGraphMSNReliabilityENG data={filteredRowData}></BarGraphMSNReliabilityENG>
+                <div className="graph">
+                    <BarGraphMSNReliabilityENG data={filteredRowData} />
                 </div>
             </div>
-            <div className="row" style={{ justifyContent: "space-between", marginBottom: '20px' }}>
+
+            <div className="graphs">
                 <h2>MSN Reliability</h2>
-
-                <div className="col-3 graphContainer" >
-
-                    <BarGraphMSNReliabilityENG data={filteredRowData}></BarGraphMSNReliabilityENG>
+                <div className="graph">
+                    <BarGraphMSNReliabilityENG data={filteredRowData} />
                 </div>
-
-                <div className="col-3 graphContainer" >
-                    <PieChartMSNBRL data={filteredRowData}></PieChartMSNBRL>
-
+                <div className="graph">
+                    <PieChartMSNBRL data={filteredRowData} />
                 </div>
-                <div className="col-3 graphContainer" >
-                    <PieChartMSNBRL data={filteredRowData} ></PieChartMSNBRL>
+                <div className="graph">
+                    <PieChartMSNBRL data={filteredRowData} />
                 </div>
             </div>
         </div>
     );
 };
 
-export default Analytics
+export default Analytics;
