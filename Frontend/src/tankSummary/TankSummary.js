@@ -398,17 +398,19 @@ export default function TankSummary({ baNo }) {
             if (baNoTrimmed === selectedBANoTrimmed) {
                 const tempData = row;
                 const uniqueData = [
-                    { field: "BA/REG NO.", value: tempData["BA No"] },
-                    { field: "KM/HRS", value: tempData["KM/HRS"] },
-                    { field: "Chassis No", value: tempData["Chassis No"] },
-                    { field: "DATE OF INDUCTION", value: tempData["DATE OF INDUCTION"] },
-                    { field: "MAKE/TYPE", value: tempData["MAKE/TYPE"] },
-                    { field: "ISSUE TYPE", value: tempData["ISSUE TYPE"] },
-                    { field: "USER UNIT", value: tempData["USER UNIT"] },
-                    { field: "EQPT STATUS", value: tempData["EQPT STATUS"] },
-                    { field: "BOH/ORG", value: tempData["BOH/ORG"] },
-                    { field: "BOH DATE", value: tempData["BOH DATE"] },
-                    { field: "BOH KM/HRS", value: tempData["BOH KM/HRS"] },
+                    { field: "BA/REG NO", value: tempData[fieldMap["baNo"]]},
+                    { field: "USER UNIT", value: tempData[fieldMap["unit"]]},
+                    { field: "BDE", value: tempData[fieldMap["bde"]]},
+                    { field: "DIV/(I) BDE", value: tempData[fieldMap["div"]]},
+                    { field: "CORPS", value: tempData[fieldMap["corps"]]},
+                    { field: "YEAR OF INDUCTION", value: tempData[fieldMap["yoi"]]},
+                    { field: "MAKE/TYPE", value: tempData[fieldMap["typeOfEquipment"]]},
+                    { field: "ORIGIN", value: tempData[fieldMap["issueType"]]},
+                    { field: "ENG KM", value: tempData[fieldMap["engKm"]]},
+                    { field: "ENG HRS", value: tempData[fieldMap["engHrs"]]},
+                    { field: "CHASSIS KM", value: tempData[fieldMap["chassisKm"]]},
+                    { field: "CHASSIS HRS", value: tempData[fieldMap["chassisHrs"]]},
+                    { field: "EQPT STATUS", value: tempData[fieldMap["eqptStatus"]]}
                 ];
 
                 setRowDataForUnique(uniqueData);
