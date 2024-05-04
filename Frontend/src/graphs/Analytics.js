@@ -20,7 +20,11 @@ const Analytics = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get("/allData");
-                setData(response.data);
+                let newRowData = response.data;
+                if(response.data)
+                 newRowData = response.data.filter(row => ((row["Type of Eqpt"].trim().toLowerCase() == 'TK T-90'.toLowerCase()) || (row["Type of Eqpt"].trim().toLowerCase() == 'TK T-72'.toLowerCase()) || (row["Type of Eqpt"].trim().toLowerCase() == 'MBT Arjun'.toLowerCase()) || (row["Type of Eqpt"].trim().toLowerCase() == 'iCV BMP II'.toLowerCase())));
+
+                setData(newRowData);
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching data:", error);
