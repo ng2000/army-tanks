@@ -28,9 +28,14 @@ const LoginPage = () => {
   }
 
   return (
-    <div style={{minHeight:'80vh', padding:'10px'}}>
+    <div style={{ minHeight: '80vh', padding: '50px' }}>
       <div style={styles.container}>
-        <h2 style={styles.heading}>Login Page</h2>
+        <h1 style={styles.heading}>WELCOME BACK !</h1>
+        <h2 style={styles.heading}>
+          Sign in to continue to the
+          Vehicle Information Repository and Analytics  For Armoured Tanks
+          (VIRAAT)
+        </h2>
         <div style={styles.inputContainer}>
           <label style={styles.label}>Username:</label>
           <input
@@ -91,6 +96,8 @@ const styles = {
     backgroundColor: '#007bff',
     color: '#fff',
     cursor: 'pointer',
+    marginTop: 10,
+    marginBottom: 10,
   },
   error: {
     color: 'red',

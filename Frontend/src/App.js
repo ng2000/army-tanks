@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import NavbarComponent from "./navbar/Navbar";
 import Banner from './dataGrid/DataGrid';
@@ -19,9 +19,12 @@ const ProtectedRoute = ({ element }) => {
 };
 
 function App() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === '/login';
+
   return (
     <div className="App">
-      <NavbarComponent />
+      {!isLoginPage && <NavbarComponent />}
       <Routes>
         <Route path="/" element={<ProtectedRoute element={<Banner />} />} />
         <Route path="/analytics" element={<ProtectedRoute element={<Analytics />} />} />
@@ -31,7 +34,7 @@ function App() {
         <Route path="/summary" element={<ProtectedRoute element={<TankSummary baNo={'05X 4H'} />} />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
-      <Footer />
+      {!isLoginPage && <Footer />}
     </div>
   );
 }
