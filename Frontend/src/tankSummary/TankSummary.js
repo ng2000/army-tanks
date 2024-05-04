@@ -118,38 +118,166 @@ export default function TankSummary({ baNo }) {
         gunPullBackDoneDate: 'Gun Pull Back Done Date',
         gunPullBackDueDate: 'Gun Pull Back Due Date',
         gunPullBackRemarks: 'Gun Pull Back Remarks',
-      };
+    };
 
+    // const [columnDefs, setColumnDefs] = useState([
+    //     { field: "baNo", headerName:"BA/REGD No" },
+    //     { field: "Unit" },
+    //     { field: "BDE" },
+    //     { field: "DIV/(I) BDE" },
+    //     { field: "CORPS" },
+    //     { field: "Year of Induction" },
+    //     { field: "Type of Eqpt" },
+    //     { field: "Issue Type"},
+    //     { field: "Type of Eqpt" },
+
+    //     { field: "Eng Kms" },
+    //     { field: "Eng Hrs" },
+    //     { field: "Chassis No" },
+    //     { field: "Year of Induction" },
+
+
+    //     { field: "Engine Org/OH" },
+    //     { field: "Date Of Fitment" },
+    //     { field: "Eng Hrs" },
+    //     { field: "Eng Km" },
+    // ]);
     const [columnDefs, setColumnDefs] = useState([
-        { field: "baNo", headerName:"BA/REGD No" },
-        { field: "Unit" },
-        { field: "BDE" },
-        { field: "DIV/(I) BDE" },
-        { field: "CORPS" },
-        { field: "Year of Induction" },
-        { field: "Type of Eqpt" },
-        { field: "Issue Type"},
-        { field: "Type of Eqpt" },
-
-        { field: "Eng Kms" },
-        { field: "Eng Hrs" },
-        { field: "Chassis No" },
-        { field: "Year of Induction" },
-
-
-        { field: "Engine Org/OH" },
-        { field: "Date Of Fitment" },
-        { field: "Eng Hrs" },
-        { field: "Eng Km" },
+        { headerName: "Assy", field: fieldMap["assy"], minWidth: 170 },
+        { headerName: "Section", field: fieldMap["section"], minWidth: 170 },
+        { headerName: "Nature of Defect", field: fieldMap["natureOfDefect"], minWidth: 170 },
+        { headerName: "Demand Placed to", field: fieldMap["demandPlacedTo"], minWidth: 170 },
+        { headerName: "Demand No & dt", field: fieldMap["demandNoDt"], minWidth: 170 },
+        { headerName: "Cont No & dt", field: fieldMap["contNoDt"], minWidth: 170 },
+        { headerName: "Work Order No & Date", field: fieldMap["workOrderNoDate"], minWidth: 170 },
+        { headerName: "Fwd to", field: fieldMap["fwdTo"], minWidth: 170 },
+        { headerName: "Since", field: fieldMap["since"], minWidth: 170 },
+        { headerName: "Present status", field: fieldMap["presentStatus"], minWidth: 170 }
     ]);
 
     const [columnDefs1, setColumnDefs1] = useState([
-        { field: "SNO", minWidth: 170 },
-        { field: "BTY Details" },
-        { field: "Life Of Battery" },
-        { field: "Date Of Issue" },
+        { headerName: "DUE DT", field: fieldMap["tmIDue"], minWidth: 170 },
+        { headerName: "CARRIED OUT", field: fieldMap["tmICarriedOut"], minWidth: 170 },
+        { headerName: "REMARKS", field: fieldMap["tmIRemarks"], minWidth: 170 }
     ]);
 
+    const tmIIColumnDefs = [
+        { headerName: "DUE DT", field: fieldMap["tmIIDue"], minWidth: 170 },
+        { headerName: "CARRIED OUT", field: fieldMap["tmIICarriedOut"], minWidth: 170 },
+        { headerName: "REMARKS", field: fieldMap["tmIIRemarks"], minWidth: 170 }
+    ];
+
+    const mrColumnDefs = [
+        { headerName: "TYPE OF MR", field: fieldMap["typeOfMR"], minWidth: 170 },
+        { headerName: "DUE DT", field: fieldMap["mrDueDt"], minWidth: 170 },
+        { headerName: "CARRIED OUT", field: fieldMap["mrCarriedOut"], minWidth: 170 },
+        { headerName: "REMARKS", field: fieldMap["mrRemarks"], minWidth: 170 }
+    ];
+    const ohColumnDefs = [
+        { headerName: "TYPE OF OH", field: fieldMap["typeOfOH"], minWidth: 170 },
+        { headerName: "DUE DT", field: fieldMap["ohDueDt"], minWidth: 170 },
+        { headerName: "CARRIED OUT", field: fieldMap["ohCarriedOut"], minWidth: 170 },
+        { headerName: "REMARKS", field: fieldMap["ohRemarks"], minWidth: 170 }
+    ];
+
+    const engineColumnDefs = [
+        { headerName: "ENG REG NO", field: fieldMap["engRegNo"], minWidth: 170 },
+        { headerName: "ENG OH/ORG", field: fieldMap["engineOrgOH"], minWidth: 170 },
+        { headerName: "DT OF CHANGE", field: fieldMap["engDateOfChange"], minWidth: 170 },
+        { headerName: "KM", field: fieldMap["engKm"], minWidth: 170 },
+        { headerName: "HRS", field: fieldMap["engHrs"], minWidth: 170 }
+    ];
+
+    const btyColumnDefs = [
+        { headerName: "DT OF ISSUE", field: fieldMap["btyDtOfIssue"], minWidth: 170 },
+        { headerName: "BTY EXP ON", field: fieldMap["btyExpOn"], minWidth: 170 }
+    ];
+
+    const muaColumnDefs = [
+        { headerName: "NOMENCLATURE", field: fieldMap["muaNomenclature"], minWidth: 170 },
+        { headerName: "DT OF FITMENT", field: fieldMap["muaDtOfFittment"], minWidth: 170 },
+        { headerName: "REMARKS", field: fieldMap["muaRemarks"], minWidth: 170 }
+    ];
+
+    const thermalSightColumnDefs = [
+        { headerName: "NOMENCLATURE OF ASSY/SUB ASSY", field: fieldMap["tsNomenclature"], minWidth: 170 },
+        { headerName: "REGD NO", field: fieldMap["tsRegdNo"], minWidth: 170 },
+        { headerName: "DT OF ISSUE", field: fieldMap["tsDtOfIssue"], minWidth: 170 },
+        { headerName: "EQPT STATUS", field: fieldMap["tsEqptStatus"], minWidth: 170 }
+    ];
+
+    const nitrogenPurgingColumnDefs = [
+        { headerName: "DUE DT", field: fieldMap["n2PurgingDueDate"], minWidth: 170 },
+        { headerName: "CARRIED OUT", field: fieldMap["n2PurgingCarriedOut"], minWidth: 170 },
+        { headerName: "REMARKS", field: fieldMap["n2PurgingRemarks"], minWidth: 170 }
+    ];
+
+    const getterActivationColumnDefs = [
+        { headerName: "DUE DT", field: fieldMap["getterActivationDueDate"], minWidth: 170 },
+        { headerName: "CARRIED OUT", field: fieldMap["getterActivationCarriedOut"], minWidth: 170 },
+        { headerName: "REMARKS", field: fieldMap["getterActivationRemarks"], minWidth: 170 }
+    ];
+
+    const tcmEqptsDetailsIColumnDefs = [
+        { headerName: "RS CNR 900 M DETAILS(5W,20W,50W)", field: fieldMap["tcmIDetails"], minWidth: 170 },
+        { headerName: "REGD NO", field: fieldMap["tcmIRegdNo"], minWidth: 170 },
+        { headerName: "DATE OF ISSUE", field: fieldMap["tcmIDtOfIssue"], minWidth: 170 },
+        { headerName: "WARRANTY PERIOD", field: fieldMap["tcmIWarrantyPeriod"], minWidth: 170 },
+        { headerName: "EQPT STATUS", field: fieldMap["tcmIEqptStatus"], minWidth: 170 },
+        { headerName: "FIS TESTING DUE ON", field: fieldMap["tcmIFISTestingDueOn"], minWidth: 170 }
+    ];
+
+    const tcmEqptsDetailsIIColumnDefs = [
+        { headerName: "GPS 9312 A", field: fieldMap["tcmIIDetails"], minWidth: 170 },
+        { headerName: "REGD NO", field: fieldMap["tcmIIRegdNo"], minWidth: 170 },
+        { headerName: "DATE OF ISSUE", field: fieldMap["tcmIIDtOfIssue"], minWidth: 170 },
+        { headerName: "WARRANTY PERIOD", field: fieldMap["tcmIIWarrantyPeriod"], minWidth: 170 },
+        { headerName: "EQPT STATUS", field: fieldMap["tcmIIEqptStatus"], minWidth: 170 },
+        { headerName: "FIS TESTING DUE ON", field: fieldMap["tcmIIFISTestingDueOn"], minWidth: 170 }
+    ];
+
+    const tcmEqptsDetailsIIIColumnDefs = [
+        { headerName: "DCH", field: fieldMap["tcmIIIDetails"], minWidth: 170 },
+        { headerName: "REGD NO", field: fieldMap["tcmIIIRegdNo"], minWidth: 170 },
+        { headerName: "DATE OF ISSUE", field: fieldMap["tcmIIIDtOfIssue"], minWidth: 170 },
+        { headerName: "WARRANTY PERIOD", field: fieldMap["tcmIIIWarrantyPeriod"], minWidth: 170 },
+        { headerName: "EQPT STATUS", field: fieldMap["tcmIIIEqptStatus"], minWidth: 170 },
+        { headerName: "FIS TESTING DUE ON", field: fieldMap["tcmIIIFISTestingDueOn"], minWidth: 170 }
+    ];
+
+    const armDetailsColumnDefs = [
+        { headerName: "BRL REGD NO", field: fieldMap["armtBrlRegdNo"], minWidth: 170 },
+        { headerName: "RECOIL BUFFER REGD NO", field: fieldMap["armtRecoilBufferRegdNo"], minWidth: 170 },
+        { headerName: "RECUPERATOR REGD NO", field: fieldMap["armtRecuperatorRegdNo"], minWidth: 170 },
+        { headerName: "BREECH BLOCK REGD NO", field: fieldMap["armtBreechBlockRegdNo"], minWidth: 170 },
+        { headerName: "BREECH RING REGD NO", field: fieldMap["armtBreechRingRegdNo"], minWidth: 170 },
+        { headerName: "BRL STATUS", field: fieldMap["armtBrlStatus"], minWidth: 170 },
+        { headerName: "TOTAL EFCS FIRED", field: fieldMap["armtTotalEfcsFired"], minWidth: 170 },
+        { headerName: "TOTAL ROUND FIRE", field: fieldMap["armtTotalRoundFire"], minWidth: 170 },
+        { headerName: "DT OF SERIES EXAM", field: fieldMap["armtDtOfSeriesExam"], minWidth: 170 },
+        { headerName: "QUARTER OF LIFE", field: fieldMap["armtQuarterOfLife"], minWidth: 170 },
+        { headerName: "WEAR VERTICLE", field: fieldMap["armtWearVerticle"], minWidth: 170 },
+        { headerName: "BORE CONDITION", field: fieldMap["armtBoreCondition"], minWidth: 170 },
+        { headerName: "CHAMBER CONDITION", field: fieldMap["armtChamberCondition"], minWidth: 170 },
+        { headerName: "FUME EXTRACTOR CONDITION", field: fieldMap["armtFumeExtractorCondition"], minWidth: 170 },
+        { headerName: "DATE OF LAST INSP", field: fieldMap["armtDateOfLastInsp"], minWidth: 170 }
+    ];
+
+    const armDetailsRecoilSysColumnDefs = [
+        { headerName: "SI DONE", field: fieldMap["recoilSysSIDOne"], minWidth: 170 },
+        { headerName: "SI DUE", field: fieldMap["recoilSysSIDue"], minWidth: 170 },
+        { headerName: "REMARKS", field: fieldMap["recoilSysRemarks"], minWidth: 170 }
+    ];
+    const armDetailsTypeOfAmnFiredColumnDefs = [
+        { headerName: "TYPE OF AMN", field: fieldMap["armtFiredTypeOfAmnFired"], minWidth: 170 },
+        { headerName: "ROUND FIRED", field: fieldMap["armtFiredRoundFired"], minWidth: 170 },
+        { headerName: "REMARKS", field: fieldMap["armtFiredRemarks"], minWidth: 170 }
+    ];
+    const gunPullBackColumnDefs = [
+        { headerName: "DUE DATE", field: fieldMap["gunPullBackDueDate"], minWidth: 170 },
+        { headerName: "DONE DATE", field: fieldMap["gunPullBackDoneDate"], minWidth: 170 },
+        { headerName: "REMARKS", field: fieldMap["gunPullBackRemarks"], minWidth: 170 }
+    ];
     const [columnDefs2, setColumnDefs2] = useState([
         { field: "SNO", minWidth: 170 },
         { field: "Nomenclature" },
@@ -212,13 +340,13 @@ export default function TankSummary({ baNo }) {
     ]);
 
     const [columnDefs10, setColumnDefs10] = useState([
-        { field: "field", cellStyle: {fontWeight: 'bold'} },
+        { field: "field", cellStyle: { fontWeight: 'bold' } },
         { field: "value" },
     ]);
 
     const gridOptions = {
         headerHeight: 0 // Set header height to 0 to hide headers
-      };
+    };
     const defaultColDef = useMemo(() => {
         return {
             editable: true,
@@ -242,7 +370,7 @@ export default function TankSummary({ baNo }) {
                 .then((resp) => resp.json())
                 .then((data) => {
                     setRowData(data);
-                      
+
                     setSelectedBANo(baNo);
                     // Add a slight delay before autosizing columns
                     setTimeout(() => {
@@ -267,23 +395,23 @@ export default function TankSummary({ baNo }) {
             // Trim whitespace from each "BA No" value before comparing
             const baNoTrimmed = row["BA No"].trim();
             const selectedBANoTrimmed = selectedBANo.trim();
-            if(baNoTrimmed === selectedBANoTrimmed) {
+            if (baNoTrimmed === selectedBANoTrimmed) {
                 const tempData = row;
                 const uniqueData = [
-                    { field: "BA/REG NO.", value: tempData["BA No"]},
-                    { field: "KM/HRS", value: tempData["KM/HRS"]},
-                    { field: "Chassis No", value: tempData["Chassis No"]},
+                    { field: "BA/REG NO.", value: tempData["BA No"] },
+                    { field: "KM/HRS", value: tempData["KM/HRS"] },
+                    { field: "Chassis No", value: tempData["Chassis No"] },
                     { field: "DATE OF INDUCTION", value: tempData["DATE OF INDUCTION"] },
-                    { field: "MAKE/TYPE", value: tempData["MAKE/TYPE"]},
-                    { field: "ISSUE TYPE", value: tempData["ISSUE TYPE"]},
-                    { field: "USER UNIT", value: tempData["USER UNIT"]},
-                    { field: "EQPT STATUS", value: tempData["EQPT STATUS"]},
-                    { field: "BOH/ORG", value: tempData["BOH/ORG"]},
-                    { field: "BOH DATE", value: tempData["BOH DATE"]},
-                    { field: "BOH KM/HRS", value: tempData["BOH KM/HRS"]},
-                  ];
+                    { field: "MAKE/TYPE", value: tempData["MAKE/TYPE"] },
+                    { field: "ISSUE TYPE", value: tempData["ISSUE TYPE"] },
+                    { field: "USER UNIT", value: tempData["USER UNIT"] },
+                    { field: "EQPT STATUS", value: tempData["EQPT STATUS"] },
+                    { field: "BOH/ORG", value: tempData["BOH/ORG"] },
+                    { field: "BOH DATE", value: tempData["BOH DATE"] },
+                    { field: "BOH KM/HRS", value: tempData["BOH KM/HRS"] },
+                ];
 
-                  setRowDataForUnique(uniqueData);
+                setRowDataForUnique(uniqueData);
             }
             return baNoTrimmed === selectedBANoTrimmed;
         });
@@ -343,6 +471,10 @@ export default function TankSummary({ baNo }) {
                 </div>
             </div>
 
+            <h2>
+                VOR/EOA/R2 DETAILS
+            </h2>
+
             <div className="center-grid">
                 <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
@@ -356,6 +488,10 @@ export default function TankSummary({ baNo }) {
                 </div>
             </div>
 
+            <h2>
+                PREVENTIVE MAINT DETAILS
+            </h2>
+            <h3>TM I</h3>
             <div className="center-grid">
                 <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
@@ -368,47 +504,12 @@ export default function TankSummary({ baNo }) {
                     />
                 </div>
             </div>
+            <h3>TM II</h3>
             <div className="center-grid">
                 <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
-                        columnDefs={columnDefs1}
-                        defaultColDef={defaultColDef}
-                        className="gridClass"
-                        pagination={true}
-                        onGridReady={onGridReady}
-                    />
-                </div>
-            </div>
-            <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
-                    <AgGridReact
-                        rowData={filteredRowData}
-                        columnDefs={columnDefs2}
-                        defaultColDef={defaultColDef}
-                        className="gridClass"
-                        pagination={true}
-                        onGridReady={onGridReady}
-                    />
-                </div>
-            </div>
-            <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
-                    <AgGridReact
-                        rowData={filteredRowData}
-                        columnDefs={columnDefs3}
-                        defaultColDef={defaultColDef}
-                        className="gridClass"
-                        pagination={true}
-                        onGridReady={onGridReady}
-                    />
-                </div>
-            </div>
-            <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
-                    <AgGridReact
-                        rowData={filteredRowData}
-                        columnDefs={columnDefs4}
+                        columnDefs={tmIIColumnDefs}
                         defaultColDef={defaultColDef}
                         className="gridClass"
                         pagination={true}
@@ -417,11 +518,12 @@ export default function TankSummary({ baNo }) {
                 </div>
             </div>
 
+            <h3>MR Details</h3>
             <div className="center-grid">
                 <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
-                        columnDefs={columnDefs5}
+                        columnDefs={mrColumnDefs}
                         defaultColDef={defaultColDef}
                         className="gridClass"
                         pagination={true}
@@ -430,35 +532,14 @@ export default function TankSummary({ baNo }) {
                 </div>
             </div>
 
+
+
+            <h3>OH Details</h3>
             <div className="center-grid">
                 <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
-                        columnDefs={columnDefs6}
-                        defaultColDef={defaultColDef}
-                        className="gridClass"
-                        pagination={true}
-                        onGridReady={onGridReady}
-                    />
-                </div>
-            </div>
-            <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
-                    <AgGridReact
-                        rowData={filteredRowData}
-                        columnDefs={columnDefs7}
-                        defaultColDef={defaultColDef}
-                        className="gridClass"
-                        pagination={true}
-                        onGridReady={onGridReady}
-                    />
-                </div>
-            </div>
-            <div className="center-grid">
-                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
-                    <AgGridReact
-                        rowData={filteredRowData}
-                        columnDefs={columnDefs8}
+                        columnDefs={ohColumnDefs}
                         defaultColDef={defaultColDef}
                         className="gridClass"
                         pagination={true}
@@ -467,11 +548,15 @@ export default function TankSummary({ baNo }) {
                 </div>
             </div>
 
+
+            <h2>
+                ENG DETAILS
+            </h2>
             <div className="center-grid">
                 <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
-                        columnDefs={columnDefs9}
+                        columnDefs={engineColumnDefs}
                         defaultColDef={defaultColDef}
                         className="gridClass"
                         pagination={true}
@@ -479,11 +564,213 @@ export default function TankSummary({ baNo }) {
                     />
                 </div>
             </div>
+
+
+            <h2>
+                BTY DETAILS
+            </h2>
             <div className="center-grid">
                 <div className="ag-theme-quartz-dark gridClassSummary center-grid">
                     <AgGridReact
                         rowData={filteredRowData}
-                        columnDefs={columnDefs10}
+                        columnDefs={btyColumnDefs}
+                        defaultColDef={defaultColDef}
+                        className="gridClass"
+                        pagination={true}
+                        onGridReady={onGridReady}
+                    />
+                </div>
+            </div>
+
+            <h2>
+                MUA DETAILS
+            </h2>
+            <div className="center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
+                    <AgGridReact
+                        rowData={filteredRowData}
+                        columnDefs={muaColumnDefs}
+                        defaultColDef={defaultColDef}
+                        className="gridClass"
+                        pagination={true}
+                        onGridReady={onGridReady}
+                    />
+                </div>
+            </div>
+
+
+
+            <h2>
+                GCE & OPTO SEC
+            </h2>
+            <h3>THERMAL SIGHT DETAILS			</h3>
+            <div className="center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
+                    <AgGridReact
+                        rowData={filteredRowData}
+                        columnDefs={thermalSightColumnDefs}
+                        defaultColDef={defaultColDef}
+                        className="gridClass"
+                        pagination={true}
+                        onGridReady={onGridReady}
+                    />
+                </div>
+            </div>
+
+            <h3>NITROGEN PURGING
+            </h3>
+            <div className="center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
+                    <AgGridReact
+                        rowData={filteredRowData}
+                        columnDefs={nitrogenPurgingColumnDefs}
+                        defaultColDef={defaultColDef}
+                        className="gridClass"
+                        pagination={true}
+                        onGridReady={onGridReady}
+                    />
+                </div>
+            </div>
+
+            <h3>GETTER ACTIVATION DETAILS
+            </h3>
+            <div className="center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
+                    <AgGridReact
+                        rowData={filteredRowData}
+                        columnDefs={nitrogenPurgingColumnDefs}
+                        defaultColDef={defaultColDef}
+                        className="gridClass"
+                        pagination={true}
+                        onGridReady={onGridReady}
+                    />
+                </div>
+            </div>
+
+
+            <h2> TCM SEC
+            </h2>
+            <h3>TCM EQPTS DETAILS I
+
+            </h3>
+            <div className="center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
+                    <AgGridReact
+                        rowData={filteredRowData}
+                        columnDefs={tcmEqptsDetailsIColumnDefs}
+                        defaultColDef={defaultColDef}
+                        className="gridClass"
+                        pagination={true}
+                        onGridReady={onGridReady}
+                    />
+                </div>
+            </div>
+
+            <h3>TCM EQPTS DETAILS II
+
+            </h3>
+            <div className="center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
+                    <AgGridReact
+                        rowData={filteredRowData}
+                        columnDefs={tcmEqptsDetailsIIColumnDefs}
+                        defaultColDef={defaultColDef}
+                        className="gridClass"
+                        pagination={true}
+                        onGridReady={onGridReady}
+                    />
+                </div>
+            </div>
+
+            <h3>TCM EQPTS DETAILS III
+
+            </h3>
+            <div className="center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
+                    <AgGridReact
+                        rowData={filteredRowData}
+                        columnDefs={tcmEqptsDetailsIIIColumnDefs}
+                        defaultColDef={defaultColDef}
+                        className="gridClass"
+                        pagination={true}
+                        onGridReady={onGridReady}
+                    />
+                </div>
+            </div>
+
+            <h2> ARMTS SEC
+            </h2>
+            <h3>ARMT DETAILS
+            </h3>
+            <div className="center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
+                    <AgGridReact
+                        rowData={filteredRowData}
+                        columnDefs={armDetailsColumnDefs}
+                        defaultColDef={defaultColDef}
+                        className="gridClass"
+                        pagination={true}
+                        onGridReady={onGridReady}
+                    />
+                </div>
+            </div>
+
+            <h3>RECOIL SYS
+            </h3>
+            <div className="center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
+                    <AgGridReact
+                        rowData={filteredRowData}
+                        columnDefs={armDetailsColumnDefs}
+                        defaultColDef={defaultColDef}
+                        className="gridClass"
+                        pagination={true}
+                        onGridReady={onGridReady}
+                    />
+                </div>
+            </div>
+
+            <h3>TYPE OF AMN FIRED
+
+            </h3>
+            <div className="center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
+                    <AgGridReact
+                        rowData={filteredRowData}
+                        columnDefs={armDetailsRecoilSysColumnDefs}
+                        defaultColDef={defaultColDef}
+                        className="gridClass"
+                        pagination={true}
+                        onGridReady={onGridReady}
+                    />
+                </div>
+            </div>
+
+            <h3>TYPE OF AMN FIRED
+
+            </h3>
+            <div className="center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
+                    <AgGridReact
+                        rowData={filteredRowData}
+                        columnDefs={armDetailsTypeOfAmnFiredColumnDefs}
+                        defaultColDef={defaultColDef}
+                        className="gridClass"
+                        pagination={true}
+                        onGridReady={onGridReady}
+                    />
+                </div>
+            </div>
+
+            <h3>GUN PULL BACK
+
+
+            </h3>
+            <div className="center-grid">
+                <div className="ag-theme-quartz-dark gridClassSummary center-grid">
+                    <AgGridReact
+                        rowData={filteredRowData}
+                        columnDefs={gunPullBackColumnDefs}
                         defaultColDef={defaultColDef}
                         className="gridClass"
                         pagination={true}
