@@ -38,11 +38,11 @@ export default function DataGrid() {
   const [columnDefs, setColumnDefs] = useState([
     { field: "BA No", headerName: "BA No" },
     { field: "Unit", headerName: "UNIT" },
-    { field: "BDE", headerName:"BDE" },
-    { field: "DIV/(I) BDE", headerName:"DIV/(I) BDE" },
-    { field: "CORPS", headerName:"CORPS" },
-    { field: "Issue Type", headerName:"ORIGIN" },
-    { field: "SER/R2/EOA/VOR", headerName:"EQPT STATUS" },
+    { field: "BDE", headerName: "BDE" },
+    { field: "DIV/(I) BDE", headerName: "DIV/(I) BDE" },
+    { field: "CORPS", headerName: "CORPS" },
+    { field: "Issue Type", headerName: "ORIGIN" },
+    { field: "SER/R2/EOA/VOR", headerName: "EQPT STATUS" },
     {
       field: "actions",
       headerName: "Summary",
@@ -101,10 +101,10 @@ export default function DataGrid() {
 
   return (
     <div>
-<div style={{ backgroundColor: "#333", padding: "10px", marginBottom: "20px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-  <h1 style={{ color: "#fff", margin: 0 }}>EQPT Dashboard</h1>
-  <button onClick={() => window.location.href = "/add"} style={{ backgroundColor: "#007bff", color: "#fff", border: "none", borderRadius: "4px", cursor: "pointer", padding: "8px 16px" }}>Add New Tank</button>
-</div>
+      <div style={{ backgroundColor: "#333", padding: "10px", marginBottom: "20px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <h1 style={{ color: "#fff", margin: 0 }}>{showSummary ? 'Log Book' : 'Dashboard'} </h1>
+        {!showSummary && <button onClick={() => window.location.href = "/add"} style={{ backgroundColor: "#007bff", color: "#fff", border: "none", borderRadius: "4px", cursor: "pointer", padding: "8px 16px" }}>Add New Tank</button>}
+      </div>
 
       {showSummary ? (
         <div>

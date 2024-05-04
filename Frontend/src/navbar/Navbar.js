@@ -27,7 +27,7 @@ const NavbarComponent = () => {
               <Nav.Link href="/download" className="navbar11_dropdown-toggle">Export</Nav.Link>
             ) : (<></>
             )}
-            <Nav.Link href="/search" className="navbar11_dropdown-toggle">Search</Nav.Link>
+            <Nav.Link href="/search" className="navbar11_dropdown-toggle">PREVENTIVE MAINT DETAILS </Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">

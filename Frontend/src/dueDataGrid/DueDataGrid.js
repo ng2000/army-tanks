@@ -7,115 +7,115 @@ import "./DueDataGrid.css";
 export default function DueDataGrid() {
   const [rowData, setRowData] = useState([]);
 
- const columnDefs = useMemo(() => [
-   { field: "BA No", minWidth: 170 },
-   {
-     field: "TM I Due",
-     filter: "agDateColumnFilter",
-     filterParams: {
-       filterOptions: [
-         "equals",
-         "notEqual",
-         "lessThan",
-         "lessThanOrEqual",
-         "greaterThan",
-         "greaterThanOrEqual",
-         "inRange",
-       ],
-     },
-   },
-   {
-        field: "TM II Due",
-        filter: "agDateColumnFilter",
-        filterParams: {
-          filterOptions: [
-            "equals",
-            "notEqual",
-            "lessThan",
-            "lessThanOrEqual",
-            "greaterThan",
-            "greaterThanOrEqual",
-            "inRange",
-          ],
-        },
+  const columnDefs = useMemo(() => [
+    { field: "BA No", minWidth: 170 },
+    {
+      field: "TM I Due",
+      filter: "agDateColumnFilter",
+      filterParams: {
+        filterOptions: [
+          "equals",
+          "notEqual",
+          "lessThan",
+          "lessThanOrEqual",
+          "greaterThan",
+          "greaterThanOrEqual",
+          "inRange",
+        ],
       },
-      {
-           field: "MR-I Due Dt",
-           filter: "agDateColumnFilter",
-           filterParams: {
-             filterOptions: [
-               "equals",
-               "notEqual",
-               "lessThan",
-               "lessThanOrEqual",
-               "greaterThan",
-               "greaterThanOrEqual",
-               "inRange",
-             ],
-           },
-         },
-         {
-              field: "OH-I Due Dt",
-              filter: "agDateColumnFilter",
-              filterParams: {
-                filterOptions: [
-                  "equals",
-                  "notEqual",
-                  "lessThan",
-                  "lessThanOrEqual",
-                  "greaterThan",
-                  "greaterThanOrEqual",
-                  "inRange",
-                ],
-              },
-            },
-            {
-                 field: "MR II Duee",
-                 filter: "agDateColumnFilter",
-                 filterParams: {
-                   filterOptions: [
-                     "equals",
-                     "notEqual",
-                     "lessThan",
-                     "lessThanOrEqual",
-                     "greaterThan",
-                     "greaterThanOrEqual",
-                     "inRange",
-                   ],
-                 },
-               },
-               {
-                    field: "OH II Due",
-                    filter: "agDateColumnFilter",
-                    filterParams: {
-                      filterOptions: [
-                        "equals",
-                        "notEqual",
-                        "lessThan",
-                        "lessThanOrEqual",
-                        "greaterThan",
-                        "greaterThanOrEqual",
-                        "inRange",
-                      ],
-                    },
-                  },{
-                                        field: "N2 Purging Due Date",
-                                        filter: "agDateColumnFilter",
-                                        filterParams: {
-                                          filterOptions: [
-                                            "equals",
-                                            "notEqual",
-                                            "lessThan",
-                                            "lessThanOrEqual",
-                                            "greaterThan",
-                                            "greaterThanOrEqual",
-                                            "inRange",
-                                          ],
-                                        },
-                                      }
+    },
+    {
+      field: "TM II Due",
+      filter: "agDateColumnFilter",
+      filterParams: {
+        filterOptions: [
+          "equals",
+          "notEqual",
+          "lessThan",
+          "lessThanOrEqual",
+          "greaterThan",
+          "greaterThanOrEqual",
+          "inRange",
+        ],
+      },
+    },
+    {
+      field: "MR-I Due Dt",
+      filter: "agDateColumnFilter",
+      filterParams: {
+        filterOptions: [
+          "equals",
+          "notEqual",
+          "lessThan",
+          "lessThanOrEqual",
+          "greaterThan",
+          "greaterThanOrEqual",
+          "inRange",
+        ],
+      },
+    },
+    {
+      field: "OH-I Due Dt",
+      filter: "agDateColumnFilter",
+      filterParams: {
+        filterOptions: [
+          "equals",
+          "notEqual",
+          "lessThan",
+          "lessThanOrEqual",
+          "greaterThan",
+          "greaterThanOrEqual",
+          "inRange",
+        ],
+      },
+    },
+    {
+      field: "MR II Duee",
+      filter: "agDateColumnFilter",
+      filterParams: {
+        filterOptions: [
+          "equals",
+          "notEqual",
+          "lessThan",
+          "lessThanOrEqual",
+          "greaterThan",
+          "greaterThanOrEqual",
+          "inRange",
+        ],
+      },
+    },
+    {
+      field: "OH II Due",
+      filter: "agDateColumnFilter",
+      filterParams: {
+        filterOptions: [
+          "equals",
+          "notEqual",
+          "lessThan",
+          "lessThanOrEqual",
+          "greaterThan",
+          "greaterThanOrEqual",
+          "inRange",
+        ],
+      },
+    }, {
+      field: "N2 Purging Due Date",
+      filter: "agDateColumnFilter",
+      filterParams: {
+        filterOptions: [
+          "equals",
+          "notEqual",
+          "lessThan",
+          "lessThanOrEqual",
+          "greaterThan",
+          "greaterThanOrEqual",
+          "inRange",
+        ],
+      },
+    }
 
-   // Include other columns here with similar configurations
- ], []);
+    // Include other columns here with similar configurations
+  ], []);
 
 
   const defaultColDef = useMemo(() => {
@@ -172,8 +172,8 @@ export default function DueDataGrid() {
 
   // Custom comparator for date filtering
   const dateComparator = (filterLocalDateAtMidnight, cellValue) => {
-  console.log("filterLocalDateAtMidnight ",filterLocalDateAtMidnight);
-  console.log("cellValue ",cellValue);
+    console.log("filterLocalDateAtMidnight ", filterLocalDateAtMidnight);
+    console.log("cellValue ", cellValue);
     // Convert cell value (date string) to a JavaScript Date object
     const cellDate = parseDateString(cellValue);
     // Check if cellDate is valid
@@ -193,7 +193,7 @@ export default function DueDataGrid() {
 
   // Helper function to parse date strings into Date objects
   const parseDateString = (dateString) => {
-    if(dateString) {
+    if (dateString) {
       const dateParts = dateString.split("-");
       if (dateParts.length === 3) {
         const day = parseInt(dateParts[0], 10);
@@ -206,20 +206,23 @@ export default function DueDataGrid() {
   };
 
   return (
-    <div className="center-grid">
-            <div style={{ backgroundColor: "#333", padding: "10px", marginBottom: "20px" }}>
-        <h1 style={{ color: "#fff", textAlign: "center", margin: 0 }}>Search</h1>
+    <div>
+      <div style={{ backgroundColor: "#333", padding: "10px", marginBottom: "20px" }}>
+        <h1 style={{ color: "#fff", textAlign: "center", margin: 0 }}>PREVENTIVE MAINT DETAILS </h1>
       </div>
-      <div className="ag-theme-quartz-dark gridClass center-grid">
-        <AgGridReact
-          rowData={rowData}
-          columnDefs={columnDefs}
-          defaultColDef={defaultColDef}
-          className="gridClass"
-          pagination={true}
-          onGridReady={onGridReady}
-        />
+      <div className="center-grid">
+        <div className="ag-theme-quartz-dark gridClass center-grid">
+          <AgGridReact
+            rowData={rowData}
+            columnDefs={columnDefs}
+            defaultColDef={defaultColDef}
+            className="gridClass"
+            pagination={true}
+            onGridReady={onGridReady}
+          />
+        </div>
       </div>
+
     </div>
   );
 };
