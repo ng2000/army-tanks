@@ -8,6 +8,7 @@ import BarGraphMSNReliabilityENG from "./BarGraphMSNReliabilityENG";
 import PieChartMSNBRL from "./PieChartMSNBRL";
 import PieChartOrigin from "./PieChartOrigin";
 import './Analytics.css'
+import GraphGrid from "./GraphGrid";
 
 const Analytics = () => {
     const [data, setData] = useState([]);
@@ -157,7 +158,8 @@ const Analytics = () => {
 
                 </div>
                 <div className="col-4 graphContainer" style={{ margin: '10px' }}>
-                    <PieChartMSNBRL data={filteredRowData} ></PieChartMSNBRL>
+                    {/* <PieChartMSNBRL data={filteredRowData} ></PieChartMSNBRL> */}
+                    <GraphGrid data={filteredRowData}></GraphGrid>
                 </div>
             </div>
 

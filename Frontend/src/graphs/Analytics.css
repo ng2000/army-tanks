@@ -30,3 +30,7 @@ h2 {
     color: #333;
     margin-bottom: 10px;
 }
+.graphGridClass {
+    width: 100%;
+    height: 250px !important;
+}
